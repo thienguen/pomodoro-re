@@ -1,0 +1,7 @@
+.next/
+.vercel/
+node_modules/
+
+client/dist/
+/**/node_modules/*
+package-lock.json
