@@ -22,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className={cn('font-dosis antialiased')} suppressHydrationWarning={true}>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          {/* <div className='bg-red-500'> */}
           {children}
+          {/* </div> */}
         </ThemeProvider>
       </body>
     </html>
