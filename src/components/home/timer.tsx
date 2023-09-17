@@ -30,9 +30,6 @@ const Timer = () => {
     var minutes = Math.floor((state.timeLeft % 3600) / 60)
     var seconds = Math.floor((state.timeLeft % 3600) % 60)
 
-    console.log('minutes', minutes)
-    console.log('seconds', seconds)
-
     return ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2)
   }
 
@@ -49,7 +46,7 @@ const Timer = () => {
       <motion.h1
         initial={{ zoom: 0.7 }}
         animate={{ zoom: getTextSize() }}
-        className='text-4xl font-medium'
+        className='text-6xl font-medium'
       >
         {state.timeLeft >= 0 ? getTime() : '00:00'}
       </motion.h1>

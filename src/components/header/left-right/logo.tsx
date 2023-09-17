@@ -6,7 +6,7 @@ function Logo() {
       <a href='/' className={cn('flex items-center')}>
         <img src='/icons/logo.png' alt='Pomodoro-logo' width={20} height={20} className='dark:invert-0 invert'/>
       </a>
-        <p className='font-bold dark:text-white text-black'>Pomofocus</p>
+        <p className='font-bold dark:text-white text-black'>Pomodoro-re</p>
     </h1>
   )
 }
