@@ -13,14 +13,19 @@ import { HiOutlineStop } from 'react-icons/hi'
 /* Types */
 import { type Pomodoro } from '@/components/home/index'
 
+/* Hooks */
+import useResponsiveSize from '@/hooks/useResponsiveSize' // Import the custom hook
+
 const ControlButtons = () => {
   const { state, setState }: any = useContext(Context)
+  const getScaleFactor = useResponsiveSize() // Use the custom hook
+  const iconSize = 24 * getScaleFactor()
 
-  console.log('state', state)
+  // console.log('state', state)
+  console.log("Scale Factor:", getScaleFactor());
 
   /* Eh, too tired */
-  const buttonStyles =
-    'flex items-center justify-center gap-1 p-3 text-xl rounded-lg transition-transform duration-100 ease-in-out hover:scale-105'
+  const buttonStyles = `flex items-center justify-center gap-1 p-3 text-xl rounded-lg transition-transform duration-100 ease-in-out hover:scale-105 transform scale-${getScaleFactor()}`
 
   const getButtonContext = () => {
     switch (state.mode) {
@@ -36,7 +41,7 @@ const ControlButtons = () => {
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
-            Start <BsPlay size={24} />
+            Start <BsPlay size={iconSize} />
           </motion.button>
         )
       case 'paused':
@@ -51,7 +56,7 @@ const ControlButtons = () => {
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
-            Resume <BsPlay size={24} />
+            Resume <BsPlay size={iconSize} />
           </motion.button>
         )
       case 'running':
@@ -68,7 +73,7 @@ const ControlButtons = () => {
                 setState((prevState: Pomodoro) => ({ ...prevState, mode: 'paused' }))
               }}
             >
-              <AiOutlinePauseCircle size={24} />
+              <AiOutlinePauseCircle size={iconSize} />
             </motion.button>
 
             {/* Stop */}
@@ -90,7 +95,11 @@ const ControlButtons = () => {
     }
   }
 
-  return <div className='flex justify-center'>{getButtonContext()}</div>
+  return (
+    <div className='flex justify-center' style={{ transform: `scale(${getScaleFactor()})` }}>
+      {getButtonContext()}
+    </div>
+  )
 }
 
 export default ControlButtons

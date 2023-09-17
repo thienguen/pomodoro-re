@@ -12,10 +12,10 @@ interface MainScreenProps {
 const MainScreen = ({ children }: MainScreenProps) => {
   // Initial state for the context
   const [state, setState] = useState<Pomodoro>({
-    timeLeft: 1500, // for 25 minutes in seconds
-    lapse: 0,
-    type: 'pomodoro',
-    mode: 'idle',
+    timeLeft: 1500,         // for 25 minutes in seconds
+    lapse   : 0,
+    type    : 'pomodoro',
+    mode    : 'idle',
   })
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const MainScreen = ({ children }: MainScreenProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <div className='mb-5 flex h-1/2 w-full flex-col items-center justify-center rounded-md bg-white bg-opacity-10 py-5 pb-7'>
+        <div className='mb-5 flex h-1/2 w-full flex-col items-center justify-center rounded-md bg-white bg-opacity-10 py-5 pb-7 gap-y-2'>
           {children}
         </div>
       </motion.div>

@@ -31,12 +31,12 @@ const RightOptions: React.FC = () => {
   return (
     <>
       {/* Right */}
-      <ul className={'flex items-center gap-2.5'}>
+      <ul className={'flex gap-2.5'}>
         {/* Settings */}
         <li>
           <a /* href='/settings' */>
             <RightButton>
-              <div className={cn('flex flex-row items-center')}>
+              <div className='flex flex-row items-center'>
                 <BsGear className={cn('mr-1')} /> {/* Gear icon */}
                 Setting
               </div>
@@ -45,15 +45,13 @@ const RightOptions: React.FC = () => {
         </li>
 
         {/* And this */}
-        <li>
+        <li className='flex flex-row items-center'>
           <Menu menuButton={renderMenuButton}>
             <MenuItem icon={<SiBuymeacoffee className={cn('w-3.5 opacity-80')} />}>
               Star this project if you like it
             </MenuItem>
             <a /* href='/login' */>
-              <MenuItem icon={<ImProfile className={cn('w-3.5 opacity-80')} />}>
-                No login, too much works
-              </MenuItem>
+              <MenuItem icon={<ImProfile className={cn('w-3.5 opacity-80')} />}>No login, too much works</MenuItem>
             </a>
           </Menu>
         </li>
