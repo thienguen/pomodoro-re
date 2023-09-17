@@ -11,7 +11,7 @@
  */
 
 import { Header } from '@/components/header/index'
-import { MainScreen, LapseCounter, Timer, ControlButtons } from '@/components/home/index'
+import { MainScreen, LapseCounter, Timer, ControlButtons, OptionsBar } from '@/components/home/index'
 
 export default function Home() {
   
@@ -22,6 +22,7 @@ export default function Home() {
 
       {/* Body */}
       <MainScreen>
+        <OptionsBar />
         <Timer />
         <ControlButtons />
         <LapseCounter />

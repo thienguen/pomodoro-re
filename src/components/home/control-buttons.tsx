@@ -6,8 +6,7 @@ import { Context } from '@/util/context'
 import { motion } from 'framer-motion'
 
 /* Icons */
-import { BsPlay } from 'react-icons/bs'
-import { AiOutlinePauseCircle } from 'react-icons/ai'
+import { AiOutlinePauseCircle, AiOutlinePlayCircle } from 'react-icons/ai'
 import { HiOutlineStop } from 'react-icons/hi'
 
 /* Types */
@@ -20,9 +19,6 @@ const ControlButtons = () => {
   const { state, setState }: any = useContext(Context)
   const getScaleFactor = useResponsiveSize() // Use the custom hook
   const iconSize = 24 * getScaleFactor()
-
-  // console.log('state', state)
-  console.log("Scale Factor:", getScaleFactor());
 
   /* Eh, too tired */
   const buttonStyles = `flex items-center justify-center gap-1 p-3 text-xl rounded-lg transition-transform duration-100 ease-in-out hover:scale-105 transform scale-${getScaleFactor()}`
@@ -41,7 +37,7 @@ const ControlButtons = () => {
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
-            Start <BsPlay size={iconSize} />
+            Start <AiOutlinePlayCircle size={iconSize} />
           </motion.button>
         )
       case 'paused':
@@ -56,7 +52,7 @@ const ControlButtons = () => {
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
-            Resume <BsPlay size={iconSize} />
+            Resume <AiOutlinePlayCircle size={iconSize} />
           </motion.button>
         )
       case 'running':
@@ -86,7 +82,7 @@ const ControlButtons = () => {
                 setState((prevState: Pomodoro) => ({ ...prevState, mode: 'idle', timeLeft: 1500 }))
               }}
             >
-              End <HiOutlineStop size={26} />
+              End <HiOutlineStop size={iconSize} />
             </motion.button>
           </>
         )
@@ -96,7 +92,7 @@ const ControlButtons = () => {
   }
 
   return (
-    <div className='flex justify-center' style={{ transform: `scale(${getScaleFactor()})` }}>
+    <div className='flex justify-center ' style={{ transform: `scale(${getScaleFactor()})` }}>
       {getButtonContext()}
     </div>
   )
