@@ -29,6 +29,7 @@ const Menu: FC<MenuProps> = ({ children, menuButton }) => {
 
   return (
     <div className={cn('relative inline-block')} ref={containerRef}>
+      {/* Show this at first, onClick, show the MenuItems */}
       {menuButton(handleToggle)}
       {visible && (
         <div

@@ -9,35 +9,24 @@
  *   6. Deploy, debatable
  */
 
-import ThemeToggle from '@/components/ui/theme-toggle'
-import { cn } from '@/util/cn'
 // import { modes, SHORT_BREAK, LONG_BREAK } from '@/util/mode'
-import {Header} from '@/components/header/index'
+import { Header } from '@/components/header/index'
+import { Background, LapseCounter, Timer, ControlButtons } from '@/components/home/index'
 
 export default function Home() {
   // const currentMode = modes[SHORT_BREAK] // For demonstration, using SHORT_BREAK as default
-
+  
   return (
     <>
-      <div
-        className={cn(
-          'mx-auto flex max-w-2xl flex-col p-4 text-white transition-colors duration-500'
-        )}
-      >
-        <Header />
-        <div className={cn('max-w-9/12 flex w-full flex-grow flex-col self-center p-4 font-light')}>
-          {/* <Timer /> */}
-        </div>
-      </div>
+      {/* Navbar */}
+      <Header />
 
-      <div
-        className={cn(
-          'mx-auto flex h-52 w-full flex-row items-center justify-center text-4xl font-bold'
-        )}
-      >
-        Somethingholy
-        <ThemeToggle />
-      </div>
+      {/* Body */}
+      <Background>
+        <LapseCounter />
+        <Timer />
+        <ControlButtons />
+      </Background>
     </>
   )
 }
