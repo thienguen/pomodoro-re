@@ -1,7 +1,39 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
-  darkMode: ['class'],
+  daisyui: {
+    themes: [
+      'light',
+      'dark',
+      'cupcake',
+      'bumblebee',
+      'emerald',
+      'corporate',
+      'synthwave',
+      'retro',
+      'cyberpunk',
+      'valentine',
+      'halloween',
+      'garden',
+      'forest',
+      'aqua',
+      'lofi',
+      'pastel',
+      'fantasy',
+      'wireframe',
+      'black',
+      'luxury',
+      'dracula',
+      'cmyk',
+      'autumn',
+      'business',
+      'acid',
+      'lemonade',
+      'night',
+      'coffee',
+      'winter',
+    ],
+  },
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,7 +42,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /* Set up */
+          /* Set up */
         'input'     : 'hsl(var(--input))',
         'ring'      : 'hsl(var(--ring))',
         'border'    : 'hsl(var(--border))',
@@ -63,8 +95,13 @@ const config: Config = {
       },
 
       backgroundColor: {
-        'aqua'  : '#00FFFF',
-        'silver': '#C0C0C0',
+        aqua  : '#00FFFF',
+        silver: '#C0C0C0',
+      },
+
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic' : 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
 
       borderRadius: {
@@ -72,11 +109,20 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+
+      width: {
+        '28': '4.375rem',
+      },
+
+      minHeight: {
+        '15': '1.875rem',
+      },
     },
     fontFamily: {
       dosis: ['Dosis', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: [require('daisyui')],
 }
+
 export default config
