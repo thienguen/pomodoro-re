@@ -54,11 +54,15 @@ const RightOptions: React.FC = () => {
         {/* And this */}
         <li className='flex flex-row items-center'>
           <Menu menuButton={renderMenuButton}>
-            <MenuItem icon={<SiBuymeacoffee className={cn('w-3.5 opacity-80')} />}>
-              Star this project if you like it
-            </MenuItem>
-            <a /* href='/login' */>
-              <MenuItem icon={<ImProfile className={cn('w-3.5 opacity-80')} />}>No login, too much works</MenuItem>
+            <a href="https://github.com/Thienguen/pomodoro-re" target='_blank' rel='noopener noreferrer'>
+              <MenuItem icon={<SiBuymeacoffee className={cn('w-3.5 opacity-80')} />}>
+                Star this project if you like it
+              </MenuItem>
+            </a>
+            <a>
+              <MenuItem icon={<ImProfile className={cn('w-3.5 opacity-80')} />}>
+                No login, too much works {/* Something holy holy */}
+              </MenuItem>
             </a>
           </Menu>
         </li>

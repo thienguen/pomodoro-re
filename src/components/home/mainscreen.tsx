@@ -78,7 +78,7 @@ const MainScreen = ({ children }: MainScreenProps) => {
         {childArray[1]}
         {childArray[2]}
       </div>
-      <div className='mt-3 flex flex-col items-center justify-center'>{childArray[3]}</div>
+      <div className='my-2 flex flex-col items-center justify-center'>{childArray[3]}</div>
     </>
   )
 

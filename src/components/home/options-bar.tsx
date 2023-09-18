@@ -24,7 +24,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({ children, active, onClick }
   return (
     <button
       onClick={onClick}
-      className={`h-7 px-3 py-0.5 text-base font-medium text-white transition-transform duration-100 ease-in-out rounded-lg ${
+      className={`h-8 px-3 py-0.5 text-base font-medium text-white transition-transform duration-100 ease-in-out rounded-lg ${
         active ? 'bg-opacity-15 -translate-y-0.5 transform bg-black' : 'bg-gray-400'
       }`}
     >
@@ -51,7 +51,7 @@ function OptionsBar() {
   console.log(state)
 
   return (
-    <div className='mt-6 flex items-center space-x-1 text-center'>
+    <div className='mt-9 flex items-center space-x-1 text-center'>
       {modes.map(({ type, label, timeLeft }) => (
         <OptionButton key={type} active={state.type === type} onClick={() => handleModeChange(type, timeLeft)}>
           {label}

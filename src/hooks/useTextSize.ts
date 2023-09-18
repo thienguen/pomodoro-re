@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useMediaWidth } from './useMediaWidth';
 
+
+/**
+ * LMAFO, a hook within a hook baby
+ */
 const useTextSize = () => {
   // Initialize with default values
   const [screenSize, setScreenSize] = useState({
@@ -7,10 +12,13 @@ const useTextSize = () => {
     height: 600,   // Default height
   });
 
+  // Get the text size based on the screen size
+  const isMobileView = useMediaWidth('400px', true);
+
   const getTextSize = () => {
     const aspectRatio = screenSize.width / screenSize.height;
-    const baseSize    = 1.3;                                   // This is the base size. 
-    const sensitivity = 0.2;                                   // This determines how sensitive the size is to changes in aspect ratio. 
+    const baseSize    = isMobileView ? 1.0 : 1.3;  // This is the base size. 
+    const sensitivity = 0.2;                       // This determines how sensitive the size is to changes in aspect ratio. 
   
     return baseSize + (aspectRatio * sensitivity);
   };
