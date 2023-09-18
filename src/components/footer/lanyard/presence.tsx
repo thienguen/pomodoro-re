@@ -1,5 +1,7 @@
+'use client'
+
 import { type ReactElement } from 'react'
-import usePresence from '@/hooks/lanyard/usePresence'
+import usePresence from '@/hooks/usePresence'
 import ActivityDetails from '@/components/footer/lanyard/activity'
 
 // 1. define all presence data type -- done
@@ -18,7 +20,7 @@ function Presence(): ReactElement {
     <>
       {activityAtIndex1 ? (
         <div className="ml-4 py-1 text-center font-pixeloidMono">
-          <ul className="flex translate-y-[-1rem] animate-fade-in  flex-col items-center justify-center gap-2 opacity-0 [--animation-delay:100ms]">
+          <ul className="flex translate-y-[-1rem] animate-fade-in flex-col items-center justify-center gap-2 opacity-0 [--animation-delay:100ms]">
             <li className="flex flex-row items-center gap-2">
               <ActivityDetails activity={activityAtIndex1} activities={activities} />
             </li>

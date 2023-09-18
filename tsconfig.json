@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target"                          : "ES2018",
     "module"                          : "esnext",
-    "moduleResolution"                : "bundler",
+    "moduleResolution"                : "node",
     "jsx"                             : "preserve",
     "lib"                             : ["dom", "dom.iterable", "esnext"],
 
