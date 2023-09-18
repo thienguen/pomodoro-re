@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Body layout */}
         <body className={'flex min-h-screen flex-col font-dosis antialiased'} suppressHydrationWarning={true}>
-          <div className='flex-grow'>
+          <div className='grow'>
             {children}
           </div>
           <Footer />
