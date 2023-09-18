@@ -2,7 +2,7 @@
 export { default as Logo }          from '@/components/header/left-right/left/logo'
 
 /* > Right side of nav? */
-export { default as RightButton }   from '@/components/header/left-right/right/right-button'
+export { default as HeaderButton }   from '@/components/header/left-right/right/right-button'
 export { default as RightOptions }  from '@/components/header/left-right/right/right-options'
 
 /* v Menu options */

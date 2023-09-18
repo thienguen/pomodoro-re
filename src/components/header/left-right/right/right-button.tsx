@@ -6,14 +6,13 @@ type ButtonProps = {
   onClick ?: () => void
 }
 
-const RightButton: React.FC<ButtonProps> = ({ icon, children, onClick }) => {
+const HeaderButton: React.FC<ButtonProps> = ({ icon, children, onClick }) => {
   return (
     <button
       className={cn(
-        'flex items-center justify-center gap-1 rounded-md p-2 transition-transform duration-100 ease-in-out hover:opacity-100 active:translate-y-0.5 active:transform',
+        'flex flex-row items-center justify-center gap-1 rounded-md p-2 transition-transform duration-100 ease-in-out active:translate-y-1 active:transform',
         'min-w-18 px-3 bg-opacity-30 opacity-90 select-none',
-        'dark:bg-white dark:text-black', // Dark theme specific styles
-        'bg-black text-white'            // Light theme specific styles
+        'btn btn-ghost'
       )}
       onClick={onClick}
     >
@@ -23,4 +22,5 @@ const RightButton: React.FC<ButtonProps> = ({ icon, children, onClick }) => {
   )
 }
 
-export default RightButton
+
+export default HeaderButton

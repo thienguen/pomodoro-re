@@ -114,7 +114,7 @@ const ControlButtons = () => {
 
   /*  */
   return (
-    <div className='flex justify-center ' style={{ transform: `scale(${getScaleFactor()})` }}>
+    <div className='flex justify-center pt-2' style={{ transform: `scale(${getScaleFactor()})` }}>
       {getButtonContext()}
     </div>
   )

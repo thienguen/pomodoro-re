@@ -2,37 +2,38 @@
 import '@/styles/globals.css'
 
 /* Util */
-import { cn } from '@/lib/util/cn'
-// import type { ServerRuntime } from 'next'
+import type { ServerRuntime } from 'next'
 
 /* Theme Provider */
-import { ThemeProvider } from '@/components/provider/ThemeProvider'
+import { ThemeChangerProvider } from '@/components/ui/themes/theme-context'
 
-// export const runtime: ServerRuntime = 'edge'
+/* Compoents */
+import { Footer } from '@/components/footer/'
 
+/**
+ * Someone complained last time I have a funny layout, not anymore
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' suppressHydrationWarning={true} >
-      <head>
-        <title>{'Thien Nguyen'}</title>
-        <meta content={'Thienguen'} property='og:title' />
-        <meta content={'Recreating Pomodoro, cause I said so'} property='og:description' />
-        {/* <link rel="icon" href="/images/monika-fa.png" /> as if I know how app router works */}
-      </head>
+    <ThemeChangerProvider>
+      <html lang='en' suppressHydrationWarning={true} data-theme='cupcake'>
+        {/* Metadata */}
+        <head>
+          <title>{'Thien Nguyen'}</title>
+          <meta content={'Thienguen'} property='og:title' />
+          <meta content={'Recreating Pomodoro, cause I said so'} property='og:description' />
+        </head>
 
-      <body
-        className={cn(
-          'font-dosis antialiased',
-          'bg-gradient-to-b from-[#c8c0b7] to-[#c8c0b7]' // light
-        )}
-        suppressHydrationWarning={true}
-      >
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          {/* <div className='bg-red-500'> */}
-          {children}
-          {/* </div> */}
-        </ThemeProvider>
-      </body>
-    </html>
+        {/* Body layout */}
+        <body className={'flex min-h-screen flex-col font-dosis antialiased'} suppressHydrationWarning={true}>
+          <div className='flex-grow'>
+            {children}
+          </div>
+          <Footer />
+        </body>
+      </html>
+    </ThemeChangerProvider>
   )
 }
+
+export const runtime: ServerRuntime = 'edge'

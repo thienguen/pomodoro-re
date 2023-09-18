@@ -5,7 +5,7 @@ const useResponsiveSize = () => {
   const [screenWidth, setScreenWidth] = useState(800) // Default width
 
   const getScaleFactor = () => {
-    if (screenWidth <= 480) return 0.6   // Small devices
+    if (screenWidth <= 480) return 0.7   // Small devices
     if (screenWidth <= 768) return 0.85  // Medium devices
     return 1                             // Large devices
   }

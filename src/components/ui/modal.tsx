@@ -47,10 +47,10 @@ const Modal: FC<ModalProps> = ({ children, className, onClose }) => {
         {children}
 
         <button
-          className='absolute right-0 top-0 m-4 p-2 rounded-full bg-transparent hover:bg-black hover:bg-opacity-20'
+          className='absolute right-0 top-0 m-4 p-3 rounded-full bg-transparent hover:bg-black hover:bg-opacity-20'
           onClick={closeModal}
         >
-          <BiWindowClose className='h-6 w-6 invert' />
+          <BiWindowClose className='h-7 w-7' />
         </button>
 
         <footer className='flex justify-end rounded-b bg-gray-200 p-4'>

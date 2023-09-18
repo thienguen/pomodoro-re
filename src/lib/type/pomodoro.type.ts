@@ -18,14 +18,14 @@ export type PomodoroContextType = {
 
 export const modes = [
   {
-    type: "pomodoro",
-    label: "Pomodoro",
-    timeLeft: 25 * 60, // 25 minutes in seconds
-  },
-  {
     type: "short-break",
     label: "Short Break",
     timeLeft: 5 * 60, // 5 minutes in seconds
+  },
+  {
+    type: "pomodoro",
+    label: "Pomodoro",
+    timeLeft: 25 * 60, // 25 minutes in seconds
   },
   {
     type: "long-break",

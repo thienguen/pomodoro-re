@@ -1,12 +1,18 @@
-import { cn } from '@/lib/util/cn'
+'use client'
 
-function Logo() {
+import { HeaderButton } from '@/components/header/index'
+import { TbBrandAmongUs } from 'react-icons/tb'
+
+type LogoProps = {
+  isMobile: boolean
+}
+
+function Logo({ isMobile }: LogoProps) {
   return (
-    <h1 className={cn('p-2.5 align-middle text-xl flex flex-row gap-1 select-none')}>
-      <a href='/' className={cn('flex items-center')}>
-        <img src='/icons/logo.png' alt='Pomodoro-logo' width={20} height={20} className='dark:invert-0 invert'/>
-      </a>
-        <p className='font-bold dark:text-white text-black'>Pomodoro-re</p>
+    <h1 className={`select-none ${isMobile ? 'hidden' : ''}`}>
+      <HeaderButton icon={<TbBrandAmongUs className={`h-7 w-7`} />}>
+        <p className='round-lg mx-0 pl-0 text-xl font-semibold'>Pomodoro</p>
+      </HeaderButton>
     </h1>
   )
 }

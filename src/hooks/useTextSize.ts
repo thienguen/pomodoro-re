@@ -13,11 +13,11 @@ const useTextSize = () => {
   });
 
   // Get the text size based on the screen size
-  const isMobileView = useMediaWidth('400px', true);
+  const isMobileView = useMediaWidth('500px', true);
 
   const getTextSize = () => {
     const aspectRatio = screenSize.width / screenSize.height;
-    const baseSize    = isMobileView ? 1.0 : 1.3;  // This is the base size. 
+    const baseSize    = isMobileView ? 0.8 : 1.3;  // This is the base size. 
     const sensitivity = 0.2;                       // This determines how sensitive the size is to changes in aspect ratio. 
   
     return baseSize + (aspectRatio * sensitivity);

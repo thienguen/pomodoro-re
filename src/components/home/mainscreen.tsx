@@ -47,7 +47,8 @@ const MainScreen = ({ children }: MainScreenProps) => {
   // Use the hook to determine if we're in mobile view
   // Assuming 768px is the breakpoint for mobile
   const isMobileView = useMediaWidth('768px', true)
-  const childArray = React.Children.toArray(children)
+  const notTooSmall  = useMediaWidth('400px', true)
+  const childArray   = React.Children.toArray(children)
 
   // Mobile Layout
   const mobileLayout = (
@@ -73,23 +74,25 @@ const MainScreen = ({ children }: MainScreenProps) => {
   // Desktop Layout
   const desktopLayout = (
     <>
-      <div className='flex flex-col items-center justify-center space-y-4'>
+      <div className='flex flex-col items-center justify-center space-y-3'>
         {childArray[0]}
         {childArray[1]}
         {childArray[2]}
       </div>
-      <div className='my-2 flex flex-col items-center justify-center'>{childArray[3]}</div>
+      <div className='my-2 flex flex-col items-center justify-center'>
+        {childArray[3]} {/* The Lapse counter, and messages */}
+      </div>
     </>
   )
 
   return (
     <Context.Provider value={{ state, setState }}>
       <motion.div
-        className='mx-auto mt-10 flex h-screen max-h-[60vh] max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
+        className='mx-auto flex h-screen max-h-[60vh] max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <div className='rounded-xl bg-slate-500 bg-opacity-10'>{isMobileView ? mobileLayout : desktopLayout}</div>
+        <div className='rounded-xl bg-slate-500 bg-opacity-10'>{notTooSmall ? desktopLayout : isMobileView ? mobileLayout : desktopLayout}</div>
       </motion.div>
     </Context.Provider>
   )

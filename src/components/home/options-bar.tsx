@@ -4,29 +4,32 @@
 import React, { useContext } from 'react'
 
 /* Util */
-import { Context }  from '@/lib/util/context'
-import { modes }    from '@/lib/type/pomodoro.type'; 
+import { cn } from '@/lib/util/cn'
+import { Context } from '@/lib/util/context'
+import { modes } from '@/lib/type/pomodoro.type'
 
 /* Types */
 import { type Pomodoro } from '@/components/home/index'
-
+import { useMediaWidth } from '@/hooks/useMediaWidth'
 
 type OptionButtonProps = {
   children: React.ReactNode
-  active  : boolean
-  onClick : () => void
+  active: boolean
+  onClick: () => void
 }
 
 /**
  * Whatever you choose in mode
  */
-const OptionButton: React.FC<OptionButtonProps> = ({ children, active, onClick }) => {
+const OptionButton: React.FC<OptionButtonProps & { isMobile: boolean }> = ({ children, active, onClick, isMobile }) => {
   return (
     <button
       onClick={onClick}
-      className={`h-8 px-3 py-0.5 text-base font-medium text-white transition-transform duration-100 ease-in-out rounded-lg ${
-        active ? 'bg-opacity-15 -translate-y-0.5 transform bg-black' : 'bg-gray-400'
-      }`}
+      className={cn(
+        `btn btn-ghost h-8 transform rounded-lg px-3 py-0.5 text-lg font-medium normal-case opacity-80 transition-transform duration-100 ease-in-out`,
+        `${active ? 'bg-opacity-15 -translate-y-2  underline underline-offset-4 font-semibold' : ''}`,
+        isMobile ? 'px-2 text-sm' : ''
+      )}
     >
       {children}
     </button>
@@ -37,23 +40,31 @@ const OptionButton: React.FC<OptionButtonProps> = ({ children, active, onClick }
  * OptionsBar
  */
 function OptionsBar() {
+  /* state of the timer */
   const { state, setState }: any = useContext(Context)
 
+  /* Responsive stuff */
+  const isMobile = useMediaWidth('480px', true)
+
+  /* onClick on god */
   const handleModeChange = (type: string, timeLeft: number) => {
     setState((prevState: Pomodoro) => ({
       ...prevState,
-      type    : type,
-      mode    : 'idle',
+      type: type,
+      mode: 'idle',
       timeLeft: timeLeft,
     }))
   }
 
-  console.log(state)
-
   return (
-    <div className='mt-9 flex items-center space-x-1 text-center'>
+    <div className={cn('mt-9 flex items-center text-center', isMobile ? 'flex-row' : 'space-x-2')}>
       {modes.map(({ type, label, timeLeft }) => (
-        <OptionButton key={type} active={state.type === type} onClick={() => handleModeChange(type, timeLeft)}>
+        <OptionButton
+          key={type}
+          isMobile={isMobile ?? false}
+          active={state.type === type}
+          onClick={() => handleModeChange(type, timeLeft)}
+        >
           {label}
         </OptionButton>
       ))}

@@ -27,13 +27,13 @@ function LapseCounter() {
 
     return (
       <div className={`flex flex-col items-center`}>
-        <p className='text-2xl font-medium'>{lapseMessage}</p>
+        <p className='text-xl font-medium'>{lapseMessage}</p>
         <p className='text-base text-gray-500'>{additionalMessage}</p>
       </div>
     )
   }
 
-  return <div className='pb-5'>{getActualLapse()}</div>
+  return <div className='pb-5 pt-2'>{getActualLapse()}</div>
 }
 
 export default LapseCounter
