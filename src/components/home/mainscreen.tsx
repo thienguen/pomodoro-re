@@ -13,6 +13,8 @@ interface MainScreenProps {
 
 const MainScreen = ({ children }: MainScreenProps) => {
   // Initial state for the context
+  // FIXME: this could be expand for setting page, for more context control
+  // I WILL NOT USE STATE MANAGEMENT TOOL AT ALL COST.
   const [state, setState] = useState<Pomodoro>({
     timeLeft: 1500, // for 25 minutes in seconds
     lapse: 0,

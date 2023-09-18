@@ -28,7 +28,7 @@ function LapseCounter() {
     return (
       <div className={`flex flex-col items-center`}>
         <p className='text-xl font-medium'>{lapseMessage}</p>
-        <p className='text-base text-gray-500'>{additionalMessage}</p>
+        <p className='text-base'>{additionalMessage}</p>
       </div>
     )
   }

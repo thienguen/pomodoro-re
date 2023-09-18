@@ -24,12 +24,14 @@ const RightOptions: React.FC = () => {
 
   const renderMenuButton = useCallback(
     (onClick: () => void) => (
-      <HeaderButton onClick={onClick}>
-        <div className={cn('flex flex-row items-center')}>
-          <BiUserCircle className={cn('mr-1 h-8 w-10')} /> {/* User icon */}
-          Login
-        </div>
-      </HeaderButton>
+      <a href=''>
+        <HeaderButton onClick={onClick}>
+          <div className={cn('flex flex-row items-center')}>
+            <BiUserCircle className={cn('mr-1 h-7 w-7')}  /> {/* User icon */}
+            Login
+          </div>
+        </HeaderButton>
+      </a>
 
       /* Possibly more here, if we being absolute lazy */
     ),
@@ -45,7 +47,7 @@ const RightOptions: React.FC = () => {
           <a /* href='/settings' */>
             <HeaderButton onClick={handleModalToggle}>
               <div className='flex flex-row items-center'>
-                <BsGear className={cn('mr-1 h-7  w-7')} /> {/* Gear icon */}
+                <BsGear className={cn('mr-1 h-7 w-7')} /> {/* Gear icon */}
                 Setting
               </div>
             </HeaderButton>
