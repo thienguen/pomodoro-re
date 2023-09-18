@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { cn } from '@/util/cn'
+import { cn } from '@/lib/util/cn'
 
 type MenuItemProps = {
   children: ReactNode

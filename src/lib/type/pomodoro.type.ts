@@ -1,3 +1,9 @@
+/**
+ * lapse: breh
+ * type: pomodoro, short-break, long-break
+ * timeLeft: time left in seconds
+ * mode: idle, running, paused, resume
+ */
 export type Pomodoro = {
   timeLeft: number;
   lapse   : number;
@@ -10,31 +16,29 @@ export type PomodoroContextType = {
   setState: React.Dispatch<React.SetStateAction<Pomodoro>>;
 }
 
-/* Constants */
-export const POMODORO    = "pomodoro";
-export const SHORT_BREAK = "short_break";
-export const LONG_BREAK  = "long_break";
-
 export const modes = [
   {
-    id: "pomodoro",
+    type: "pomodoro",
     label: "Pomodoro",
     timeLeft: 25 * 60, // 25 minutes in seconds
   },
   {
-    id: "short_break",
+    type: "short-break",
     label: "Short Break",
     timeLeft: 5 * 60, // 5 minutes in seconds
   },
   {
-    id: "long_break",
+    type: "long-break",
     label: "Long Break",
     timeLeft: 15 * 60, // 15 minutes in seconds
   },
 ];
 
-
 /* Unused */
+// export const POMODORO    = "pomodoro";
+// export const SHORT_BREAK = "short_break";
+// export const LONG_BREAK  = "long_break";
+
 // export type ModeType = {
 //   id   : string;
 //   label: string;

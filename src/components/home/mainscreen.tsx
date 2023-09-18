@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Context } from '@/util/context'
+import { Context } from '@/lib/util/context'
 import { type Pomodoro } from '@/components/home/index'
 import React from 'react'
 import { useMediaWidth } from '@/hooks/useMediaWidth'
@@ -40,48 +40,56 @@ const MainScreen = ({ children }: MainScreenProps) => {
       clearInterval(timer)
     }
 
-    return () => clearInterval(timer) // Cleanup on unmount
+    // Cleanup on unmount
+    return () => clearInterval(timer)
   }, [state.mode])
 
-  
   // Use the hook to determine if we're in mobile view
-  const isMobileView = useMediaWidth('768px', true); // Assuming 768px is the breakpoint for mobile
-
-  const childArray = React.Children.toArray(children);
+  // Assuming 768px is the breakpoint for mobile
+  const isMobileView = useMediaWidth('768px', true)
+  const childArray = React.Children.toArray(children)
 
   // Mobile Layout
   const mobileLayout = (
     <>
-      <div className='flex w-full justify-center pt-5'>{childArray[0]}</div>
+      <div className='flex w-full justify-center pb-5'>
+        {childArray[0]} {/* OptionsBar */}
+      </div>
       <div className='mb-5 flex w-full flex-row items-center justify-center gap-y-2 px-10 pb-10'>
-        {childArray[1]}
-        <div className='flex w-1/3 flex-col items-center justify-center'>
-          {childArray.slice(2)}
+        {/* Left, Timer */}
+        <div className='flex w-2/3 flex-col items-center justify-center mr-5'>
+          {childArray[1]} {/* Timer */}
+        </div>
+
+        {/* Right, ControlButtons & LapseCounter */}
+        <div className='flex w-1/3 flex-col items-center justify-center gap-y-3'>
+          {childArray[2]} {/* ControlButtons */}
+          {childArray[3]} {/* LapseCounter */}
         </div>
       </div>
     </>
-  );
+  )
 
   // Desktop Layout
   const desktopLayout = (
-    <div className='flex flex-col items-center justify-center space-y-5'>
-      {childArray[0]}
-      {childArray[1]}
-      {childArray[2]}
-      {childArray[3]}
-    </div>
-  );
+    <>
+      <div className='flex flex-col items-center justify-center space-y-4'>
+        {childArray[0]}
+        {childArray[1]}
+        {childArray[2]}
+      </div>
+      <div className='mt-3 flex flex-col items-center justify-center'>{childArray[3]}</div>
+    </>
+  )
 
   return (
     <Context.Provider value={{ state, setState }}>
       <motion.div
-        className='mx-auto mt-10 flex max-h-[60vh] h-screen max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
+        className='mx-auto mt-10 flex h-screen max-h-[60vh] max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <div className='rounded-xl bg-slate-500 bg-opacity-10'>
-          {isMobileView ? mobileLayout : desktopLayout}
-        </div>
+        <div className='rounded-xl bg-slate-500 bg-opacity-10'>{isMobileView ? mobileLayout : desktopLayout}</div>
       </motion.div>
     </Context.Provider>
   )

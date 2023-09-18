@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState, ReactNode, FC } from 'react'
-import { cn } from '@/util/cn'
+import { cn } from '@/lib/util/cn'
 
 type MenuProps = {
   children  : ReactNode

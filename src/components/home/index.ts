@@ -5,5 +5,5 @@ export { default as LapseCounter }    from '@/components/home/lapse-counter'
 export { default as ControlButtons }  from '@/components/home/control-buttons'
 
 /* Types  */
-export type { Pomodoro }            from '@/components/home/pomodoro.type'
-export type { PomodoroContextType } from '@/components/home/pomodoro.type'
+export type { Pomodoro }            from '@/lib/type/pomodoro.type'
+export type { PomodoroContextType } from '@/lib/type/pomodoro.type'

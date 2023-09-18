@@ -2,12 +2,12 @@
 
 /* Utils */
 import { useContext } from 'react'
-import { Context } from '@/util/context'
+import { Context } from '@/lib/util/context'
 import { motion } from 'framer-motion'
 
 /* Icons */
-import { AiOutlinePauseCircle, AiOutlinePlayCircle } from 'react-icons/ai'
 import { HiOutlineStop } from 'react-icons/hi'
+import { AiOutlinePauseCircle, AiOutlinePlayCircle } from 'react-icons/ai'
 
 /* Types */
 import { type Pomodoro } from '@/components/home/index'
@@ -15,10 +15,22 @@ import { type Pomodoro } from '@/components/home/index'
 /* Hooks */
 import useResponsiveSize from '@/hooks/useResponsiveSize' // Import the custom hook
 
+/**
+ * Mode
+ * - Idle
+ *  - Show: Start
+ * Running / Resume
+ *  - Show: Pause, End
+ * Paused
+ *  - Show: Resume
+ */
 const ControlButtons = () => {
+  /* Use context to avoid props drilling, but useState update like crazy */
   const { state, setState }: any = useContext(Context)
-  const getScaleFactor = useResponsiveSize() // Use the custom hook
-  const iconSize = 24 * getScaleFactor()
+
+  /* Get the scale factor from the custom hook */
+  const getScaleFactor = useResponsiveSize()
+  const iconSize       = 24 * getScaleFactor()
 
   /* Eh, too tired */
   const buttonStyles = `flex items-center justify-center gap-1 p-3 text-xl rounded-lg transition-transform duration-100 ease-in-out hover:scale-105 transform scale-${getScaleFactor()}`
@@ -79,7 +91,12 @@ const ControlButtons = () => {
               animate={{ opacity: 1, left: 0 }}
               transition={{ type: 'spring', duration: 0.15, delay: 0.05 }}
               onClick={() => {
-                setState((prevState: Pomodoro) => ({ ...prevState, mode: 'idle', timeLeft: 1500 }))
+                setState((prevState: Pomodoro) => ({
+                  ...prevState,
+                  timeLeft: 1500,
+                  mode    : 'idle',
+                  lapse   : prevState.type === 'pomodoro' ? prevState.lapse + 1 : prevState.lapse,
+                }))
               }}
             >
               End <HiOutlineStop size={iconSize} />
@@ -87,10 +104,15 @@ const ControlButtons = () => {
           </>
         )
       default:
-        return <></>
+        return (
+          <div className='mx-auto flex items-center justify-center text-7xl '>
+            Something has gone wrong, please refresh the page
+          </div>
+        )
     }
   }
 
+  /*  */
   return (
     <div className='flex justify-center ' style={{ transform: `scale(${getScaleFactor()})` }}>
       {getButtonContext()}

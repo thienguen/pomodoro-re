@@ -1,4 +1,4 @@
-import { cn } from '@/util/cn'
+import { cn } from '@/lib/util/cn'
 
 type ButtonProps = {
   icon    ?: React.ReactNode
@@ -11,8 +11,7 @@ const RightButton: React.FC<ButtonProps> = ({ icon, children, onClick }) => {
     <button
       className={cn(
         'flex items-center justify-center gap-1 rounded-md p-2 transition-transform duration-100 ease-in-out hover:opacity-100 active:translate-y-0.5 active:transform',
-        'min-w-18 px-3',
-        'bg-opacity-30 opacity-90',
+        'min-w-18 px-3 bg-opacity-30 opacity-90 select-none',
         'dark:bg-white dark:text-black', // Dark theme specific styles
         'bg-black text-white'            // Light theme specific styles
       )}

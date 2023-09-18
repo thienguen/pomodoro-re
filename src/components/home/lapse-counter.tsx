@@ -1,29 +1,39 @@
 'use client'
 
 import { useContext } from 'react'
-import { Context } from '@/util/context'
+import { Context } from '@/lib/util/context'
 
 function LapseCounter() {
   const { state }: any = useContext(Context)
 
   const getActualLapse = () => {
+    let lapseMessage = ''
+    let additionalMessage = ''
+
     switch (state.type) {
       case 'pomodoro':
-        return 'Lapse: ' + state.lapse
+        lapseMessage = state.lapse
+        additionalMessage = 'Time to focus!'
+        break
       case 'short-break':
-        return 'Short Break'
+        lapseMessage = 'Short Break'
+        additionalMessage = 'Time for a break!'
+        break
       case 'long-break':
-        return 'Long Break'
+        lapseMessage = 'Long Break'
+        additionalMessage = 'Time for a longer break!'
+        break
     }
+
+    return (
+      <div className={`flex flex-col items-center`}>
+        <p className='text-2xl font-medium'>{lapseMessage}</p>
+        <p className='text-base text-gray-500'>{additionalMessage}</p>
+      </div>
+    )
   }
 
-  return (
-    <>
-      <div className='flex items-center justify-center text-center mt-1'>
-        <p className='pr-1 text-lg font-medium'>{getActualLapse()}</p>
-      </div>
-    </>
-  )
+  return <div className='pb-5'>{getActualLapse()}</div>
 }
 
 export default LapseCounter

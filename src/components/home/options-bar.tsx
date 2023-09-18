@@ -1,8 +1,15 @@
 'use client'
 
-import React from 'react'
-import { modes } from '@/components/home/pomodoro.type' // Adjust the path as needed
-import { cn } from '@/util/cn'
+/* Frame */
+import React, { useContext } from 'react'
+
+/* Util */
+import { Context }  from '@/lib/util/context'
+import { modes }    from '@/lib/type/pomodoro.type'; 
+
+/* Types */
+import { type Pomodoro } from '@/components/home/index'
+
 
 type OptionButtonProps = {
   children: React.ReactNode
@@ -10,31 +17,43 @@ type OptionButtonProps = {
   onClick : () => void
 }
 
+/**
+ * Whatever you choose in mode
+ */
 const OptionButton: React.FC<OptionButtonProps> = ({ children, active, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={cn(
-        'flex items-center justify-center', // Added these classes
-        'text-white transition-transform duration-100 ease-in-out',
-        'h-8 rounded-md border border-white bg-transparent px-4 py-2 hover:bg-opacity-20',
-        active && 'translate-y-0.5 transform bg-opacity-30'
-      )}
+      className={`h-7 px-3 py-0.5 text-base font-medium text-white transition-transform duration-100 ease-in-out rounded-lg ${
+        active ? 'bg-opacity-15 -translate-y-0.5 transform bg-black' : 'bg-gray-400'
+      }`}
     >
       {children}
     </button>
   )
 }
 
-const OptionsBar: React.FC = () => {
+/**
+ * OptionsBar
+ */
+function OptionsBar() {
+  const { state, setState }: any = useContext(Context)
+
+  const handleModeChange = (type: string, timeLeft: number) => {
+    setState((prevState: Pomodoro) => ({
+      ...prevState,
+      type    : type,
+      mode    : 'idle',
+      timeLeft: timeLeft,
+    }))
+  }
+
+  console.log(state)
+
   return (
-    <div className='mb-5 flex items-center space-x-4 text-center'>
-      {modes.map(({ id, label }) => (
-        <OptionButton
-          key={id}
-          active={false} // You can replace this with the logic to determine if the button is active
-          onClick={() => {}}
-        >
+    <div className='mt-6 flex items-center space-x-1 text-center'>
+      {modes.map(({ type, label, timeLeft }) => (
+        <OptionButton key={type} active={state.type === type} onClick={() => handleModeChange(type, timeLeft)}>
           {label}
         </OptionButton>
       ))}

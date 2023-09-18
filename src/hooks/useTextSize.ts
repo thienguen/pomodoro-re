@@ -9,8 +9,8 @@ const useTextSize = () => {
 
   const getTextSize = () => {
     const aspectRatio = screenSize.width / screenSize.height;
-    const baseSize = 1.5;       // This is the base size. 
-    const sensitivity = 0.2;  // This determines how sensitive the size is to changes in aspect ratio. 
+    const baseSize    = 1.3;                                   // This is the base size. 
+    const sensitivity = 0.2;                                   // This determines how sensitive the size is to changes in aspect ratio. 
   
     return baseSize + (aspectRatio * sensitivity);
   };

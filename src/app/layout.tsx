@@ -2,7 +2,7 @@
 import '@/styles/globals.css'
 
 /* Util */
-import { cn } from '@/util/cn'
+import { cn } from '@/lib/util/cn'
 // import type { ServerRuntime } from 'next'
 
 /* Theme Provider */

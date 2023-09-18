@@ -1,8 +1,8 @@
 'use client'
 
 /* Util */
-import { cn } from '@/util/cn'
-import { useCallback } from 'react'
+import { cn } from '@/lib/util/cn'
+import { useCallback, useState } from 'react'
 
 /* Icons */
 import { SiBuymeacoffee } from 'react-icons/si'
@@ -12,8 +12,15 @@ import { BsGear } from 'react-icons/bs' // Imported gear icon
 
 /* Components */
 import { MenuItem, Menu, RightButton } from '@/components/header/index'
+import { SettingModal } from '@/components/header/index'
 
 const RightOptions: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleModalToggle = useCallback(() => {
+    setIsModalOpen(!isModalOpen)
+  }, [isModalOpen])
+
   const renderMenuButton = useCallback(
     (onClick: () => void) => (
       <RightButton onClick={onClick}>
@@ -35,7 +42,7 @@ const RightOptions: React.FC = () => {
         {/* Settings */}
         <li>
           <a /* href='/settings' */>
-            <RightButton>
+            <RightButton onClick={handleModalToggle}>
               <div className='flex flex-row items-center'>
                 <BsGear className={cn('mr-1')} /> {/* Gear icon */}
                 Setting
@@ -56,6 +63,9 @@ const RightOptions: React.FC = () => {
           </Menu>
         </li>
       </ul>
+
+      {/* Modal */}
+      {isModalOpen && <SettingModal onClose={handleModalToggle} />}
     </>
   )
 }

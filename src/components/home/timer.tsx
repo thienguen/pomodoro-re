@@ -6,7 +6,7 @@ import { useContext } from 'react'
 
 /* Utils */
 import useTextSize from '@/hooks/useTextSize' // Import the custom hook
-import { Context } from '@/util/context'
+import { Context } from '@/lib/util/context'
 
 const Timer = () => {
   const { state }: any = useContext(Context)
@@ -20,11 +20,9 @@ const Timer = () => {
   }
 
   return (
-    <div className='flex w-2/3 flex-col items-center justify-center'>
-      <motion.h1 initial={{ zoom: 0.7 }} animate={{ zoom: getTextSize() }} className='text-7xl font-medium'>
-        {state.timeLeft >= 0 ? getTime() : '00:00'}
-      </motion.h1>
-    </div>
+    <motion.h1 initial={{ zoom: 0.7 }} animate={{ zoom: getTextSize() }} className='text-7xl font-medium'>
+      {state.timeLeft >= 0 ? getTime() : '00:00'}
+    </motion.h1>
   )
 }
 
