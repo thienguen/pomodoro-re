@@ -21,6 +21,7 @@
     "eslint-config-next": "13.4.19",
     "eslint-config-prettier": "^9.0.0",
     "framer-motion": "^10.16.4",
+    "gsap": "^3.12.2",
     "next": "^13.4.12",
     "postcss": "8.4.29",
     "prettier": "^3.0.3",

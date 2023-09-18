@@ -1,0 +1,11 @@
+.cursor-light {
+  background-color: transparent;
+  border: 2px solid grey;
+  border-radius: 50%; /* makes it a circle */
+}
+
+.cursor-dark {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 50%; /* makes it a circle */
+}

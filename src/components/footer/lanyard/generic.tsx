@@ -25,7 +25,7 @@ const GenericActivity: React.FC<GenericActivityProps> = ({ icon, altText, text, 
 
       <code className="relative mx-auto cursor-cell appearance-none rounded-lg bg-transparent text-center font-dosis text-base">
         <Tooltip text={statusText ?? ''}>
-          <span className={`link-underline2 link-underline font-bold ${text_color ?? ''}`}>{text}</span>
+          <span className={`font-bold ${text_color ?? ''}`}>{text}</span>
         </Tooltip>
         <span>
           {": "}
