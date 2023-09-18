@@ -78,7 +78,7 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
 
-        // Copi Copi
+          // Copi Copi
         'bglight'    : '#F9FAFB',
         'marrslight' : '#1C9A9A',
         'marrsgreen' : '#007A7A',
@@ -92,6 +92,17 @@ const config: Config = {
         'textlight'  : '#F9FAFB',
         'pink-accent': '#a385b3',
         'gold'       : '#F6C177',
+      },
+
+      animation: {
+        'fade-in': 'fade-in 2000ms var(--animation-delay, 0ms) ease forwards',
+      },
+
+      keyframes: {
+        'fade-in': {
+          from: { opacity: '0', transform: 'translateY(-10px)' },
+          to  : { opacity: '1', transform: 'none' },
+        },
       },
 
       backgroundColor: {

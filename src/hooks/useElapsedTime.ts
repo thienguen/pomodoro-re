@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { type Activity } from 'use-lanyard'
 
 function useElapsedTime(startTimestamp?: number): string | null {
   const [currentTime, setCurrentTime] = useState<number>(Date.now())

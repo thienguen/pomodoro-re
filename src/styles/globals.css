@@ -101,3 +101,94 @@
     text-rendering : optimizeLegibility;
   }
 }
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s infinite;
+}
+
+
+/* Custom css for nav */
+.link-underline {
+  position: relative;
+  display : inline-block;
+}
+
+
+/* Hover nav for dark ------------------------------------------------- */
+.dark .link-underline::after {
+  content: '';
+
+  display   : block;
+  position  : absolute;
+  visibility: hidden;
+  background: #171923;
+
+  width : 0;
+  height: 2px;
+
+  right: 0;
+
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(transparent, transparent), linear-gradient(to right, #6acdff, #57bfff);  /* Sky blue shades */
+}
+
+.dark .link-underline:hover::after {
+  visibility: visible;
+
+  width: 100%;
+
+  left: 0;
+
+  background: linear-gradient(transparent, transparent), linear-gradient(to right, #6acdff, #57bfff);  /* Sky blue shades */
+}
+
+.link-underline2 {
+  position: relative;
+  display : inline-block;
+}
+
+/* Hover nav for light -------------------------------------------------  */
+.link-underline2::after {
+  content: '';
+
+  display   : block;
+  position  : absolute;
+  visibility: hidden;
+  background: #171923;
+
+  width : 0;
+  height: 2px;
+
+  right: 0;
+
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(transparent, transparent), linear-gradient(to right, #d87787, #861657);  /* New provided colors */
+}
+
+.link-underline2:hover::after {
+  visibility: visible;
+
+  width: 100%;
+
+  left: 0;
+
+  background: linear-gradient(transparent, transparent), linear-gradient(to right, #d87787, #861657);  /* New provided colors */
+}
