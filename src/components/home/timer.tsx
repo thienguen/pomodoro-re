@@ -2,15 +2,14 @@
 
 /* Framework */
 import { motion } from 'framer-motion'
-import { useContext } from 'react'
 
 /* Utils */
 import useTextSize from '@/hooks/useTextSize' // Import the custom hook
-import { Context } from '@/lib/util/context'
+import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 const Timer = () => {
-  const { state }: any = useContext(Context)
-  const getTextSize = useTextSize() // Use the custom hook
+  const { state }   = usePomodoroContext()!  // <-- see this !, it's not null :>
+  const getTextSize = useTextSize()          // Use the custom hook
 
   const getTime = () => {
     var minutes = Math.floor((state.timeLeft % 3600) / 60)

@@ -1,10 +1,9 @@
 'use client'
 
-import { useContext } from 'react'
-import { Context } from '@/lib/util/context'
+import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 function LapseCounter() {
-  const { state }: any = useContext(Context)
+  const { state } = usePomodoroContext()!
 
   const getActualLapse = () => {
     let lapseMessage = ''
@@ -12,14 +11,14 @@ function LapseCounter() {
 
     switch (state.type) {
       case 'pomodoro':
-        lapseMessage = state.lapse
+        lapseMessage = state.lapse.toString() 
         additionalMessage = 'Time to focus!'
         break
-      case 'short-break':
+      case 'shortBreak':
         lapseMessage = 'Short Break'
         additionalMessage = 'Time for a break!'
         break
-      case 'long-break':
+      case 'longBreak':
         lapseMessage = 'Long Break'
         additionalMessage = 'Time for a longer break!'
         break

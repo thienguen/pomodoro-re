@@ -1,9 +1,8 @@
 'use client'
 
 /* Utils */
-import { useContext } from 'react'
-import { Context } from '@/lib/util/context'
 import { motion } from 'framer-motion'
+import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 /* Icons */
 import { HiOutlineStop } from 'react-icons/hi'
@@ -26,7 +25,7 @@ import useResponsiveSize from '@/hooks/useResponsiveSize' // Import the custom h
  */
 const ControlButtons = () => {
   /* Use context to avoid props drilling, but useState update like crazy */
-  const { state, setState }: any = useContext(Context)
+  const { state, setState } = usePomodoroContext()!
 
   /* Get the scale factor from the custom hook */
   const getScaleFactor = useResponsiveSize()

@@ -2,54 +2,22 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Context } from '@/lib/util/context'
+import { Context } from '@/lib/util/unused/context'
 import { type Pomodoro } from '@/components/home/index'
 import React from 'react'
 import { useMediaWidth } from '@/hooks/useMediaWidth'
+import { PomodoroContextProvider } from '../provider/PomodoroContextProvider'
 
 interface MainScreenProps {
   children: React.ReactNode
 }
 
 const MainScreen = ({ children }: MainScreenProps) => {
-  // Initial state for the context
-  // FIXME: this could be expand for setting page, for more context control
-  // I WILL NOT USE STATE MANAGEMENT TOOL AT ALL COST.
-  const [state, setState] = useState<Pomodoro>({
-    timeLeft: 1500, // for 25 minutes in seconds
-    lapse: 0,
-    type: 'pomodoro',
-    mode: 'idle',
-  })
-
-  // Timer logic, since we shoot ourself in the foot by context
-  // but I really don't want to deal w the hassle of redux, zustand ish
-  useEffect(() => {
-    let timer: NodeJS.Timeout | undefined = undefined
-
-    /* This thing is heinous, ...but */
-    if (state.mode === 'running') {
-      timer = setInterval(() => {
-        setState((prevState) => {
-          if (prevState.timeLeft > 0) {
-            return { ...prevState, timeLeft: prevState.timeLeft - 1 }
-          } else {
-            return { ...prevState, mode: 'idle', lapse: prevState.lapse + 1 }
-          }
-        })
-      }, 1000)
-    } else if (state.mode === 'idle' || state.mode === 'paused') {
-      clearInterval(timer)
-    }
-
-    // Cleanup on unmount
-    return () => clearInterval(timer)
-  }, [state.mode])
-
   // Use the hook to determine if we're in mobile view
-  // Assuming 768px is the breakpoint for mobile
-  const isMobileView = useMediaWidth('768px', true)
-  const notTooSmall  = useMediaWidth('400px', true)
+  // Assuming 768px is the breakpoint for ipad view
+  // 400px is when it get to phone view
+  const isIpadView   = useMediaWidth('768px', true)
+  const isMobileView = useMediaWidth('400px', true)
   const childArray   = React.Children.toArray(children)
 
   // Mobile Layout
@@ -60,7 +28,7 @@ const MainScreen = ({ children }: MainScreenProps) => {
       </div>
       <div className='mb-5 flex w-full flex-row items-center justify-center gap-y-2 px-10 pb-10'>
         {/* Left, Timer */}
-        <div className='flex w-2/3 flex-col items-center justify-center mr-5'>
+        <div className='mr-5 flex w-2/3 flex-col items-center justify-center'>
           {childArray[1]} {/* Timer */}
         </div>
 
@@ -88,15 +56,17 @@ const MainScreen = ({ children }: MainScreenProps) => {
   )
 
   return (
-    <Context.Provider value={{ state, setState }}>
+    <PomodoroContextProvider>
       <motion.div
         className='mx-auto flex h-screen max-h-[60vh] max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
-        <div className='rounded-xl bg-slate-500 bg-opacity-10'>{notTooSmall ? desktopLayout : isMobileView ? mobileLayout : desktopLayout}</div>
+        <div className='rounded-xl bg-slate-500 bg-opacity-10'>
+          {isMobileView ? desktopLayout : isIpadView ? mobileLayout : desktopLayout}
+        </div>
       </motion.div>
-    </Context.Provider>
+    </PomodoroContextProvider>
   )
 }
 
