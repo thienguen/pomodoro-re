@@ -7,7 +7,7 @@ export type PomodoroContextType = {
 // This is excessive wtf
 export type Mode        = 'idle' | 'running' | 'paused' | 'finished'
 export type TimerType   = 'Pomodoro' | 'Short Break' | 'Long Break' | 'work'
-export type MessageType = 'Time to focus!' | 'Take for a break!' | 'Time for a longer break!'
+export type MessageType = 'Time to focus!' | 'Time for a break!' | 'Time for a longer break!'
 
 /**
  * lapse   : breh
@@ -40,7 +40,7 @@ export const modes = [
     // type    : 'pomodoro',
     type    : 'Pomodoro',
     timeLeft: 25 * 60,               // 25 minutes in seconds
-    message : 'Take for a break!',
+    message : 'Time for a break!',
   },
   {
     // type    : 'longBreak',

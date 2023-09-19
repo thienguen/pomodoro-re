@@ -10,7 +10,7 @@ export function formatTime(timeLeft: number) {
 
 export function updateTitle(timeLeft: number, type: TimerType) {
   const updatedMessage =
-    type === 'Pomodoro' ? 'Time to focus!' : type === 'Short Break' ? 'Take for a break!' : 'Time for a longer break!'
+    type === 'Pomodoro' ? 'Time to focus!' : type === 'Short Break' ? 'Time for a break!' : 'Time for a longer break!'
   document.title = `${formatTime(timeLeft)} - ${updatedMessage}`
 }
 

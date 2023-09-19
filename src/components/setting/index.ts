@@ -1,0 +1,5 @@
+export { default as Row    }  from '@/components/setting/row'
+export { default as Item   }  from '@/components/setting/item'
+export { default as Label  }  from '@/components/setting/label'
+export { default as Input  }  from '@/components/setting/input'
+export { default as Switch }  from '@/components/setting/switch'
