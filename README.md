@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/preview/amongus.png" alt="Banner" style="width: 150px; border-radius: 50%; filter: invert(1);">
+<img src="public/preview/amongus.png" alt="Banner" style="width: 150px; border-radius: 50%;">
 
 [pomodoro-re.vercel.app](https://pomodoro-re.vercel.app/), Re-imagine Pomodoro in my own way<br>
 Using Next.js 13, enhanced with Tailwind, theme custom with daisyUI, powered by TypeScript, and seamlessly deployed via Vercel.
@@ -115,13 +115,6 @@ Welcome to the project's folder structure! Below is an organized representation 
 ![Alt](https://repobeats.axiom.co/api/embed/7ceb93769b2e01daa7c2395d02483a6841370d81.svg "Repobeats analytics image")
 
 </div>
-
-# Issues 🧻
-
-The repo currently facing two known bugs from Next.js
-
-- [ ] [Server run out of memory](https://github.com/vercel/next.js/issues/46756)
-- [ ] [Non Post Server Error](https://github.com/vercel/next.js/issues/53882)
 
 # Aight 🐧
 
