@@ -1,34 +1,136 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+<img src="public/preview/amongus.png" alt="Banner" style="width: 150px; border-radius: 50%; filter: invert(1);">
 
-First, run the development server:
+[pomodoro-re.vercel.app](https://pomodoro-re.vercel.app/), Re-imagine Pomodoro in my own way<br>
+Using Next.js 13, enhanced with Tailwind, theme custom with daisyUI, powered by TypeScript, and seamlessly deployed via Vercel.
+
+[![CodeFactor](https://www.codefactor.io/repository/github/thienguen/pomodoro-re/badge)](https://www.codefactor.io/repository/github/thienguen/pomodoro-re)
+
+</div>
+
+# Preview ☁️
+
+<div align="center">
+
+<img src="public/preview/preview-pomo.gif/" alt="Banner" >
+
+</div>
+
+## Getting Started 🎲
+
+
+
+
+Set up the environment variables file with the following variables. (Optional)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  git clone https://github.com/Thienguen/pomodoro-re.git
+
+  # create .env file
+
+  NEXT_PUBLIC_DISCORD_ID=
+  NEXT_PUBLIC_EMAIL=
+```
+
+### Next, run in the CLI (root folder) ☢️
+
+```bash
+  # install dependencies
+  npm install
+
+  # run the development server
+  npm run dev
+  # or
+  yarn dev
+  # or
+  pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Features ✒️
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [x] Discord Presence
+- [x] useSound
+- [x] Theme options
+- [x] Reponsive (??)
 
-## Learn More
+# Project Folder Structure 💀
 
-To learn more about Next.js, take a look at the following resources:
+Welcome to the project's folder structure! Below is an organized representation of the directories and subdirectories:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+## public
+├── 📂 fav
+├── 📂 icons
+├── 📂 preview
+└── 📂 sounds
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## src code
+├── 📁 app
+│   └── 📄 layout.tsx
+│   └── 📄 page.tsx
+├── 📁 components
+│   ├── 📁 footer
+│   │   └── 📁 lanyard
+│   │   └── 📄 index
+│   ├── 📁 header
+│   │   └── 📁 left-right
+│   │   └── 📁 menu
+│   │   └── 📁 modal
+│   │   └── 📄 index
+│   ├── 📁 home
+│   │   └── 📄 index
+│   ├── 📁 provider
+│   │   └── 📄 ContextProvider.tsx
+│   ├── 📁 setting
+│   │   └── 📄 index
+│   ├── 📁 ui
+│   │   └── 📁 themes
+├── 📁 hooks
+│   └── 📁 pomodoro
+│   └── 📄 useXXX.ts 
+└── 📁 lib
+    ├── 📁 type
+    └── 📁 util
 
-## Deploy on Vercel
+## css
+├── 📁 styles
+│   ├── 📄 global.css
+│   └── 📄 cursor.css
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js](https://nextjs.org/)
+- [React.js](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [DaisyUI](https://daisyui.com/)
+
+# 📈 Statistic
+
+<div align="center">
+
+![Alt](https://repobeats.axiom.co/api/embed/7ceb93769b2e01daa7c2395d02483a6841370d81.svg "Repobeats analytics image")
+
+</div>
+
+# Issues 🧻
+
+The repo currently facing two known bugs from Next.js
+
+- [ ] [Server run out of memory](https://github.com/vercel/next.js/issues/46756)
+- [ ] [Non Post Server Error](https://github.com/vercel/next.js/issues/53882)
+
+# Aight 🐧
+
+- I still having the original Pomodoro before the current one, not sure what happened?
+- Was intended to do a reverse-engineer, turns to re-imagine.
+- Project was done in: 20 hours
+- it turns out, aight.
+- Heavily inspired by [Pomofocus](https://pomofocus.io/) and [JoseMurlloc](https://github.com/JoseMurilloc/clone-pomofocus)
+
+# 📝 License & Forking/Cloning
+
+All code in this repository is licensed under the GNU Affero General Public License v3—see the LICENSE file for more information. Please remove all of my personal information and related stuff. If you want to use this repo. This is source-available. Feels free to do so and give it a star.
