@@ -5,7 +5,7 @@ interface LabelProps {
 }
 
 const Label: FC<LabelProps> = ({ children }) => (
-  <label className='font-semibold text-gray-500'>
+  <label className='font-semibold'>
     {children} {/* Something holy */}
   </label>
 )

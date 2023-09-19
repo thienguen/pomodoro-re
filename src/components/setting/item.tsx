@@ -7,7 +7,7 @@ interface ItemProps {
 
 const Item: FC<ItemProps> = ({ children, col }) => (
   <div
-    className={`flex min-h-[30px] border-t border-gray-300 py-4 ${
+    className={`flex min-h-[40px] border-t border-gray-300 py-6 ${
       col ? 'flex-col items-start' : 'items-center justify-between'
     }`}
   >

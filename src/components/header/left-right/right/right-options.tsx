@@ -6,22 +6,24 @@ import { useCallback, useState } from 'react'
 import { metadata } from '@/lib/type/metadata'
 
 /* Icons */
-import { SiBuymeacoffee } from 'react-icons/si'
+import { BsGear } from 'react-icons/bs'        // Imported gear icon
 import { ImProfile } from 'react-icons/im'
 import { BiUserCircle } from 'react-icons/bi'  // Imported user icon
-import { BsGear } from 'react-icons/bs'        // Imported gear icon
+import { SiBuymeacoffee } from 'react-icons/si'
 
 /* Components */
-import { MenuItem, Menu, HeaderButton } from '@/components/header/index'
 import { SettingModal } from '@/components/header/index'
+import { MenuItem, Menu, HeaderButton } from '@/components/header/index'
 
 const RightOptions: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleModalToggle = useCallback(() => {
+  /* Open setting modal */
+  const handleModalToggle = () => {
     setIsModalOpen(!isModalOpen)
-  }, [isModalOpen])
+  }
 
+  /* Render menu items, which is bogus */
   const renderMenuButton = useCallback(
     (onClick: () => void) => (
       <HeaderButton onClick={onClick}>
@@ -31,7 +33,7 @@ const RightOptions: React.FC = () => {
         </div>
       </HeaderButton>
 
-      /* Possibly more here, if we being absolute lazy */
+      /* Possibly more here, unless we being absolute lazy */
     ),
     []
   )

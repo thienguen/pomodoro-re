@@ -12,12 +12,12 @@ export default function Footer() {
           </div>
 
           {/* The bar */}
-          <div>
+          <div className='lg:w-full md:w-full w-11/12 mx-auto'>
             <FooterBar isFullWidth={true} />
           </div>
 
           {/* Content */}
-          <div className='flex w-full items-center justify-center'>
+          <div className='flex w-full items-center justify-center text-center'>
             <FooterLove />
           </div>
         </div>

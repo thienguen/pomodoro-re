@@ -3,7 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useMediaWidth } from '@/hooks/useMediaWidth'
-import { PomodoroContextProvider } from '@/components/provider/PomodoroContextProvider'
 
 interface MainScreenProps {
   children: React.ReactNode
@@ -54,17 +53,15 @@ const MainScreen = ({ children }: MainScreenProps) => {
   )
 
   return (
-    <PomodoroContextProvider>
-      <motion.div
-        className='mx-auto flex h-screen max-h-[60vh] max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-      >
-        <div className='rounded-xl bg-slate-500 bg-opacity-10'>
-          {isMobileView ? desktopLayout : isIpadView ? mobileLayout : desktopLayout}
-        </div>
-      </motion.div>
-    </PomodoroContextProvider>
+    <motion.div
+      className='mx-auto flex h-screen max-h-[60vh] max-w-xl select-none flex-col justify-center overflow-hidden px-10 text-center md:px-5'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <div className='rounded-xl bg-slate-500 bg-opacity-10'>
+        {isMobileView ? desktopLayout : isIpadView ? mobileLayout : desktopLayout}
+      </div>
+    </motion.div>
   )
 }
 

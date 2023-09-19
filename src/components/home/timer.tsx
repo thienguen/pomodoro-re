@@ -9,6 +9,7 @@ import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 const Timer = () => {
   const { state }   = usePomodoroContext()!  // <-- see this !, it's not null :>
+
   const getTextSize = useTextSize()          // Use the custom hook
 
   const getTime = () => {

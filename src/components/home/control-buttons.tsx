@@ -2,6 +2,7 @@
 
 /* Utils */
 import { motion } from 'framer-motion'
+import useSound from 'use-sound'
 import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 /* Icons */
@@ -22,10 +23,16 @@ import useResponsiveSize from '@/hooks/useResponsiveSize' // Import the custom h
  *  - Show: Pause, End
  * Paused
  *  - Show: Resume
+ * 
+ * ? If auto break is on, then after a pomodoro, it will automatically start a break
+ * ? If auto Pomodoro is on, then after a break, it will automatically start a pomodoro
  */
 const ControlButtons = () => {
   /* Use context to avoid props drilling, but useState update like crazy */
   const { state, setState } = usePomodoroContext()!
+
+  /* Sound, peep, peep */
+  const [ThemeSound] = useSound('/sounds/switch-on.mp3', { volume: 1 })
 
   /* Get the scale factor from the custom hook */
   const getScaleFactor = useResponsiveSize()
@@ -92,7 +99,7 @@ const ControlButtons = () => {
               onClick={() => {
                 setState((prevState: Pomodoro) => ({
                   ...prevState,
-                  timeLeft: 1500,
+                  timeLeft: prevState.type === 'Pomodoro' ? 1500 : prevState.type === 'Short Break' ? 300 : 900,
                   mode    : 'idle',
                   lapse   : prevState.type === 'Pomodoro' ? prevState.lapse + 1 : prevState.lapse,
                 }))

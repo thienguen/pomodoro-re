@@ -5,7 +5,7 @@ import React from 'react'
 
 /* Util */
 import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
-import { modes, type TimerType, type MessageType } from '@/lib/type/pomodoro.type'
+import { type TimerType, type MessageType } from '@/lib/type/pomodoro.type'
 import { cn } from '@/lib/util/cn'
 
 /* Types */
@@ -49,8 +49,11 @@ function OptionsBar() {
 
   /* onClick on god */
   const handleModeChange = (type: TimerType, timeLeft: number, message: MessageType) => {
-    updateTitle(timeLeft, type)
+    /* Optional */
     updateFavicon(type)
+    updateTitle(timeLeft, type)
+    
+    /* Actual state update */
     setState((prevState: Pomodoro) => ({
       ...prevState,
       type    : type,
@@ -62,7 +65,7 @@ function OptionsBar() {
 
   return (
     <div className={cn('mt-9 flex items-center text-center', isMobile ? 'flex-row' : 'space-x-2')}>
-      {modes.map(({ type, timeLeft, message }) => (
+      {state.modes.map(({ type, timeLeft, message }) => (
         <OptionButton
           key={type}
           isMobile={isMobile ?? false}

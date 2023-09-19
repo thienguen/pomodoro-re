@@ -11,22 +11,25 @@
  */
 
 import { Header } from '@/components/header/'
-import { MainScreen, LapseCounter, Timer, ControlButtons, OptionsBar } from '@/components/home/index'
+import { PomodoroContextProvider } from '@/components/provider/PomodoroContextProvider'
+import { MainScreen, LapseCounter, Timer, ControlButtons, OptionsBar } from '@/components/home/'
 
 export default function Home() {
   return (
     <>
-      {/* Navbar */}
-      <Header />
+      {/* Pomodoro Context Provider */}
+      <PomodoroContextProvider>
+        {/* Navbar */}
+        <Header />
 
-      {/* Body */}
-      <MainScreen>
-        <OptionsBar />
-        <Timer />
-        <ControlButtons />
-        <LapseCounter />
-      </MainScreen>
-
+        {/* Body */}
+        <MainScreen>
+          <OptionsBar />
+          <Timer />
+          <ControlButtons />
+          <LapseCounter />
+        </MainScreen>
+      </PomodoroContextProvider>
     </>
   )
 }

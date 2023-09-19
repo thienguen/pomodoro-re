@@ -56,7 +56,7 @@ const Modal: FC<ModalProps> = ({ children, className, onClose }) => {
           <BiWindowClose className='h-7 w-7' />
         </button>
         {/* Footer, Like, confirm setting  */}
-        <footer className='flex justify-end rounded-b bg-gray-200 p-4'>
+        <footer className='flex justify-end rounded-b bg-gray-200 p-4 pr-8'>
           <Button onClick={closeModal}>OK</Button>
         </footer>
       </div>

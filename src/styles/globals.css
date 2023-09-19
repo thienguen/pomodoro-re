@@ -67,6 +67,37 @@
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
+
+  /* ===== Custom Scrollbar ===== */
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  /* Light Theme */
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;  
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);     /* color of the scroll thumb */
+    border-radius   : 6px;                    /* roundness of the scroll thumb */
+    border          : 3px solid transparent;  /* creates padding around scroll thumb */
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#413f40];
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
 }
 
 @layer base {

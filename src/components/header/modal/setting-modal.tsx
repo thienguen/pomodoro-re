@@ -1,63 +1,101 @@
+'use client'
+
 import { FC } from 'react'
 import Modal from '@/components/ui/modal'
 import { Input, Item, Label, Row, Switch } from '@/components/setting'
-import { modes } from '@/lib/type/pomodoro.type'
+import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 interface SettingModalProps {
   onClose: () => void
 }
 
+
+/**
+ * Time setting modal:
+ *  - Auto start break
+ *  - Auto start pomodoro
+ *  - Alarm sound
+ *  - Ticking sound
+ */
 const SettingModal: FC<SettingModalProps> = ({ onClose }) => {
+  const { state, setState } = usePomodoroContext()!
+
+  const handleTimeChange = (type: string, newValue: number) => {
+    // Create a new array with updated values
+    const updatedModes = state.modes.map((mode) => {
+      if (mode.type === type) {
+        return { ...mode, timeLeft: newValue * 60 } // Convert minutes to seconds
+      }
+      return mode
+    })
+
+    // Update the state with the new modes array
+    setState((prevState) => ({ ...prevState, modes: updatedModes }))
+  }
+
   return (
     <Modal onClose={onClose} className=''>
       <div className='max-h-[70vh] min-h-[60vh] overflow-y-auto px-10 py-5'>
         <h2 className='mb-4 mt-8 text-lg font-bold uppercase text-gray-500'>Timer Settings</h2>
 
-        {/* Actual stuff */}
+        {/* Time setting for all modes */}
         <Item col>
           <Label>Time (minutes)</Label>
-          <div className='mt-2 flex flex-wrap justify-between'>
-            {modes.map(({ type, timeLeft }) => (
+          <div
+            className='mt-2 flex w-full flex-wrap justify-between'
+          >
+            {state.modes.map(({ type, timeLeft }) => (
               <Input
                 key={type}
-                className='w-24' // approx 6.125rem
+                className='w-24'
                 onChange={(e) => {
-                  /* functionality */
+                  const newValue = Number(e.target.value)
+                  handleTimeChange(type, newValue)
                 }}
-                min={1}
+                min={0}
+                max={60}
+                disabled={type === state.type}
                 label={type ? type : 'Pomodoro'}
                 type='number'
-                value={timeLeft}
+                value={timeLeft / 60}
               />
             ))}
           </div>
         </Item>
 
+        {/* Other settings */}
+        {/* ---------------------------------------------- */}
         <Item>
           <Label>Auto start Breaks?</Label>
-          {/* <Switch on={autoBreaks} onClick={() => {}} /> */}
-          <Switch on={false} onClick={() => {}} />
+          <Switch on={state.autoBreak} onClick={() => {
+            setState((prevState) => ({ ...prevState, autoBreak: !prevState.autoBreak }))
+          }} />
         </Item>
 
+        {/* ---------------------------------------------- */}
         <Item>
           <Label>Auto start Pomodoros?</Label>
-          {/* <Switch on={autoPomodoros} onClick={() => {}} /> */}
-          <Switch on={false} onClick={() => {}} />
+          <Switch on={state.autoPomo} onClick={() => {
+            setState((prevState) => ({ ...prevState, autoPomo: !prevState.autoPomo }))
+          }} />
         </Item>
+
+        {/* ---------------------------------------------- */}
 
         <Item>
           <Label>Long Break interval</Label>
           <Input
-            className='w-16' // approx 4.375rem
+            className='w-16' 
             min={1}
             type='number'
             label=''
-            // value={longBreakInterval}
+            value={1}
             onChange={(e) => {
-              /* functionality */
             }}
           />
         </Item>
+
+        {/* ---------------------------------------------- */}
 
         <Item col>
           <Row>
@@ -67,39 +105,23 @@ const SettingModal: FC<SettingModalProps> = ({ onClose }) => {
                 items={alarmSounds}
                 onChange={(val) => {}}
               /> */}
-            {/* Placeholder until Select component is provided */}
+
             <div>Select Alarm Sound</div>
-          </Row>
-
-          <Row right margin>
-            {/* Placeholder until Slider component is provided */}
-            <div>Slider for Alarm Volume</div>
-          </Row>
-
-          <Row right margin>
-            <Input
-              className='w-16'
-              min={1}
-              type='number'
-              label='Repeat'
-              // value={alarmRepeat}
-              // onChange={(e) => { /* functionality */ }}
-            />
+            <div>TBD</div>
           </Row>
         </Item>
+
+        {/* ---------------------------------------------- */}
 
         <Item col>
           <Row>
             <Label>Ticking Sound</Label>
-            {/* Placeholder until Select component is provided */}
             <div>Select Ticking Sound</div>
-          </Row>
-
-          <Row right margin>
-            {/* Placeholder until Slider component is provided */}
-            <div>Slider for Ticking Volume</div>
+            <div>TBD</div>
           </Row>
         </Item>
+
+        {/* ---------------------------------------------- */}
       </div>
     </Modal>
   )
