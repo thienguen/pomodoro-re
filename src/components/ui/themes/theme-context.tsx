@@ -8,6 +8,7 @@ interface ThemeChangerProviderProps {
 }
 
 export const ThemeChangerProvider: React.FC<ThemeChangerProviderProps> = ({ children }) => {
+  // default to winter theme, lightly said
   const [theme, setTheme] = useState<string>('winter')
 
   useEffect(() => {

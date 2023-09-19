@@ -21,7 +21,9 @@ import { ThemeChangerProvider } from '@/components/ui/themes/theme-context'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeChangerProvider>
-      <InnerLayout>{children}</InnerLayout>
+      <InnerLayout>
+        {children} {/* something holy holy */}
+      </InnerLayout>
     </ThemeChangerProvider>
   )
 }
@@ -53,8 +55,11 @@ const InnerLayout: React.FC<InnerLayoutProps> = ({ children }) => {
           ref={cursorRef}
           className={`pointer-events-none fixed z-[9999] hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 lg:block ${cursorClass}`}
         />
+
         {/* The actual body, everything */}
-        <div className='grow'>{children}</div>
+        <div className='grow'>
+          {children}
+        </div>
 
         {/* Grow till footer hit the end of viewport */}
         <Footer />
@@ -63,4 +68,5 @@ const InnerLayout: React.FC<InnerLayoutProps> = ({ children }) => {
   )
 }
 
+// Experimental
 export const runtime: ServerRuntime = 'edge'

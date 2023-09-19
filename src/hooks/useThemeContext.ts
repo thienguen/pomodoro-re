@@ -2,6 +2,14 @@
 
 import React, { createContext, useContext } from 'react'
 
+
+/**
+ * Context of theme, so we simply have theme sync 
+ * across the app
+ * 
+ * Since the provider wrap around the layout, this can be utilize
+ * to grep the theme from the context. DaisyUI am i rite?
+ */
 interface ThemeContextProps {
   theme   : string
   setTheme: React.Dispatch<React.SetStateAction<string>>
@@ -10,9 +18,5 @@ interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
 
 export const useThemeContext = () => {
-  const context = useContext(ThemeContext)
-  if (!context) {
-    throw new Error('useThemeContext must be used within a ThemeChangerProvider')
-  }
-  return context
+  return useContext(ThemeContext)! // <-- we know it's not undefined, breh
 }

@@ -1,11 +1,13 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useThemeContext } from '@/hooks/useThemeContext'
 import { AiOutlineBgColors } from 'react-icons/ai'
+
 import { themes } from '@/lib/type/theme-options'
+import { useThemeContext } from '@/hooks/useThemeContext'
 
 export default function ThemeChanger() {
+  
   const { theme, setTheme } = useThemeContext()
 
   useEffect(() => {

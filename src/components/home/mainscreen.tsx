@@ -1,12 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Context } from '@/lib/util/unused/context'
-import { type Pomodoro } from '@/components/home/index'
 import React from 'react'
+import { motion } from 'framer-motion'
 import { useMediaWidth } from '@/hooks/useMediaWidth'
-import { PomodoroContextProvider } from '../provider/PomodoroContextProvider'
+import { PomodoroContextProvider } from '@/components/provider/PomodoroContextProvider'
 
 interface MainScreenProps {
   children: React.ReactNode
@@ -18,7 +15,8 @@ const MainScreen = ({ children }: MainScreenProps) => {
   // 400px is when it get to phone view
   const isIpadView   = useMediaWidth('768px', true)
   const isMobileView = useMediaWidth('400px', true)
-  const childArray   = React.Children.toArray(children)
+
+  const childArray = React.Children.toArray(children)
 
   // Mobile Layout
   const mobileLayout = (
