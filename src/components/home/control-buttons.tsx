@@ -1,9 +1,9 @@
 'use client'
 
 /* Utils */
-import { useContext } from 'react'
-import { Context } from '@/lib/util/context'
 import { motion } from 'framer-motion'
+import useSound from 'use-sound'
+import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 
 /* Icons */
 import { HiOutlineStop } from 'react-icons/hi'
@@ -23,10 +23,16 @@ import useResponsiveSize from '@/hooks/useResponsiveSize' // Import the custom h
  *  - Show: Pause, End
  * Paused
  *  - Show: Resume
+ * 
+ * ? If auto break is on, then after a pomodoro, it will automatically start a break
+ * ? If auto Pomodoro is on, then after a break, it will automatically start a pomodoro
  */
 const ControlButtons = () => {
   /* Use context to avoid props drilling, but useState update like crazy */
-  const { state, setState }: any = useContext(Context)
+  const { state, setState } = usePomodoroContext()!
+
+  /* Sound, peep, peep */
+  const [ThemeSound] = useSound('/sounds/button-press.wav', { volume: 1 })
 
   /* Get the scale factor from the custom hook */
   const getScaleFactor = useResponsiveSize()
@@ -46,6 +52,7 @@ const ControlButtons = () => {
             animate={{ color: '#fff', right: 0, width: 100 }}
             transition={{ type: 'spring', duration: 0.15 }}
             onClick={() => {
+              ThemeSound()
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
@@ -61,6 +68,7 @@ const ControlButtons = () => {
             animate={{ color: '#fff', right: 0, width: 120 }}
             transition={{ type: 'spring', duration: 0.15 }}
             onClick={() => {
+              ThemeSound()
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
@@ -78,6 +86,7 @@ const ControlButtons = () => {
               animate={{ width: 50, left: 0, color: '#fff' }}
               transition={{ type: 'spring', duration: 0.3 }}
               onClick={() => {
+                ThemeSound()
                 setState((prevState: Pomodoro) => ({ ...prevState, mode: 'paused' }))
               }}
             >
@@ -91,11 +100,12 @@ const ControlButtons = () => {
               animate={{ opacity: 1, left: 0 }}
               transition={{ type: 'spring', duration: 0.15, delay: 0.05 }}
               onClick={() => {
+                ThemeSound()
                 setState((prevState: Pomodoro) => ({
                   ...prevState,
-                  timeLeft: 1500,
+                  timeLeft: prevState.type === 'Pomodoro' ? 1500 : prevState.type === 'Short Break' ? 300 : 900,
                   mode    : 'idle',
-                  lapse   : prevState.type === 'pomodoro' ? prevState.lapse + 1 : prevState.lapse,
+                  lapse   : prevState.type === 'Pomodoro' ? prevState.lapse + 1 : prevState.lapse,
                 }))
               }}
             >
@@ -106,7 +116,7 @@ const ControlButtons = () => {
       default:
         return (
           <div className='mx-auto flex items-center justify-center text-7xl '>
-            Something has gone wrong, please refresh the page
+            Something has gone wrong, please refresh the page, Thien is too lazy to fix this
           </div>
         )
     }

@@ -3,7 +3,7 @@ import { metadata } from '@/lib/type/metadata'
 
 export default function FooterLove() {
   return (
-    <span className='ml-2 sm:balanced text-base font-medium'>
+    <span className='ml-2 mr-3 sm:balanced text-base font-medium'>
       <span className='opacity-95 dark:opacity-70'>{`© 2023 `}</span>
       <a href={`${metadata.discord}`} target='_blank'>
         <Tooltip text='find me here'>

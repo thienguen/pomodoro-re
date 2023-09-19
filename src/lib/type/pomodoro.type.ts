@@ -1,64 +1,57 @@
+export type PomodoroContextType = {
+  state: Pomodoro
+  setState: React.Dispatch<React.SetStateAction<Pomodoro>>
+}
+
+// Expanding on the Pomodoro type to include the possible modes and types
+// This is excessive wtf
+export type Mode = 'idle' | 'running' | 'paused' | 'finished'
+export type TimerType = 'Pomodoro' | 'Short Break' | 'Long Break' | 'work'
+export type MessageType = 'Time to focus!' | 'Time for a break!' | 'Time for a longer break!'
+
+export type ModeType = {
+  type    : TimerType
+  timeLeft: number
+  message : MessageType
+}
+
 /**
- * lapse: breh
- * type: pomodoro, short-break, long-break
+ * Typed it above, fill the value here
+ * Whenever use, this fill in, this is where TS become annoyence of
+ * type gymnastic. Excessive, but at the same time, really powerful to expand
+ */
+export const modes: ModeType[] = [
+  {
+    type    : 'Short Break',
+    timeLeft: 5 * 60,             // 5 minutes in seconds
+    message : 'Time to focus!',
+  },
+  {
+    type    : 'Pomodoro',
+    timeLeft: 25 * 60,               // 25 minutes in seconds
+    message : 'Time for a break!',
+  },
+  {
+    type    : 'Long Break',
+    timeLeft: 15 * 60,                      // 15 minutes in seconds
+    message : 'Time for a longer break!',
+  },
+]
+
+/**
+ * lapse   : breh
+ * type    : pomodoro, short-break, long-break
  * timeLeft: time left in seconds
- * mode: idle, running, paused, resume
+ * mode    : idle,     running,     paused, resume
  */
 export type Pomodoro = {
-  timeLeft: number;
-  lapse   : number;
-  mode    : string;
-  type    : string;
+  timeLeft : number
+  lapse    : number
+  autoBreak: boolean
+  autoPomo : boolean
+
+  mode   : Mode
+  type   : TimerType
+  message: MessageType
+  modes  : ModeType[]
 }
-
-export type PomodoroContextType = {
-  state   : Pomodoro;
-  setState: React.Dispatch<React.SetStateAction<Pomodoro>>;
-}
-
-export const modes = [
-  {
-    type: "short-break",
-    label: "Short Break",
-    timeLeft: 5 * 60, // 5 minutes in seconds
-  },
-  {
-    type: "pomodoro",
-    label: "Pomodoro",
-    timeLeft: 25 * 60, // 25 minutes in seconds
-  },
-  {
-    type: "long-break",
-    label: "Long Break",
-    timeLeft: 15 * 60, // 15 minutes in seconds
-  },
-];
-
-/* Unused */
-// export const POMODORO    = "pomodoro";
-// export const SHORT_BREAK = "short_break";
-// export const LONG_BREAK  = "long_break";
-
-// export type ModeType = {
-//   id   : string;
-//   label: string;
-//   time : number;
-// };
-
-// export const modes: Record<string, ModeType> = {
-//   [POMODORO]: {
-//     id   : POMODORO,
-//     label: "Pomodoro",
-//     time : 25,
-//   },
-//   [SHORT_BREAK]: {
-//     id   : SHORT_BREAK,
-//     label: "Short Break",
-//     time : 5,
-//   },
-//   [LONG_BREAK]: {
-//     id   : LONG_BREAK,
-//     label: "Long Break",
-//     time : 15,
-//   },
-// };

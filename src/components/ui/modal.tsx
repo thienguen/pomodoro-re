@@ -30,6 +30,7 @@ const Modal: FC<ModalProps> = ({ children, className, onClose }) => {
         closeModal()
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside)
 
     return () => document.removeEventListener('mousedown', handleClickOutside)
@@ -38,22 +39,24 @@ const Modal: FC<ModalProps> = ({ children, className, onClose }) => {
   if (onClose === undefined && !isVisible) return null
 
   return (
-    <div className='fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-40'>
+    <div className='fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-40 px-6'>
       <div className='absolute h-full w-full'></div>
       <div
         className={`relative w-full max-w-md rounded-md border-b-2 border-t-2 border-gray-300 bg-white  shadow-lg ${className}`}
         ref={modalRef}
       >
+        {/* The setting input stuff */}
         {children}
 
+        {/* Absolute the close one with no confirmation */}
         <button
-          className='absolute right-0 top-0 m-4 p-3 rounded-full bg-transparent hover:bg-black hover:bg-opacity-20'
+          className='absolute right-0 top-0 m-4 rounded-full bg-transparent p-3 hover:bg-black hover:bg-opacity-20'
           onClick={closeModal}
         >
           <BiWindowClose className='h-7 w-7' />
         </button>
-
-        <footer className='flex justify-end rounded-b bg-gray-200 p-4'>
+        {/* Footer, Like, confirm setting  */}
+        <footer className='flex justify-end rounded-b bg-gray-200 p-4 pr-8'>
           <Button onClick={closeModal}>OK</Button>
         </footer>
       </div>

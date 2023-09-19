@@ -1,12 +1,18 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useThemeContext } from '@/hooks/useThemeContext'
 import { AiOutlineBgColors } from 'react-icons/ai'
+
+import useSound from 'use-sound'
 import { themes } from '@/lib/type/theme-options'
+import { useThemeContext } from '@/hooks/useThemeContext'
 
 export default function ThemeChanger() {
   const { theme, setTheme } = useThemeContext()
+
+  /* Sound be hitting */
+  const [ThemeSound] = useSound('/sounds/page.mp3', { volume: 0.5 })
+  const [SwitchOn]   = useSound('/sounds/switch-on.mp3', { volume: 0.5 })
 
   useEffect(() => {
     localStorage.setItem('theme', theme as string)
@@ -43,7 +49,13 @@ export default function ThemeChanger() {
     <div className='relative flex items-center justify-center bg-base-100 px-2 py-4 text-base-content'>
       <div className='dropdown dropdown-end'>
         {/* Themes options */}
-        <label tabIndex={0} className='btn m-1 flex items-center justify-center rounded-lg '>
+        <label
+          tabIndex={0}
+          className='btn m-1 flex items-center justify-center rounded-lg'
+          onClick={() => {
+            ThemeSound()
+          }}
+        >
           <AiOutlineBgColors className='h-7 w-7' /> {/* <-- added the icon here */}
           Themes
         </label>
@@ -63,6 +75,7 @@ export default function ThemeChanger() {
               <button
                 className='text-md btn mx-1 my-1 flex w-3/4 items-center justify-between overflow-clip rounded-md hover:bg-neutral-content hover:text-neutral-focus'
                 onClick={() => {
+                  SwitchOn()
                   setTheme(theme)
                 }}
               >

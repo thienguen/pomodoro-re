@@ -1,10 +1,12 @@
 'use client'
 
 /* Components */
-import { RightOptions, Logo } from '@/components/header/index'
+import { RightOptions, Logo } from '@/components/header/'
 import ThemeChanger from '@/components/ui/themes/theme-changer'
-import { useMediaWidth } from '@/hooks/useMediaWidth'
+
+/* Util */
 import { cn } from '@/lib/util/cn'
+import { useMediaWidth } from '@/hooks/useMediaWidth'
 
 function Header() {
   const isMobile = useMediaWidth('450px', true)

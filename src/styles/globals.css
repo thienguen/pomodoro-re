@@ -6,18 +6,6 @@
 
 @layer base {
   :root {
-      /* --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --muted           : 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover           : 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --card           : 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%; */
-
     --border: 214.3 31.8% 91.4%;
     --input : 214.3 31.8% 91.4%;
 
@@ -39,18 +27,6 @@
   }
 
   .dark {
-      /* --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --muted           : 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --popover           : 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --card           : 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%; */
-
     --border: 217.2 32.6% 17.5%;
     --input : 217.2 32.6% 17.5%;
 
@@ -69,13 +45,15 @@
     --ring: 217.2 32.6% 17.5%;
   }
 
-    /* For Webkit browsers like Chrome and Safari */
+  /* For Webkit browsers like Chrome and Safari */
+  /* width of the entire scrollbar */
   .dropdown-content::-webkit-scrollbar {
-    width: 12px;  /* width of the entire scrollbar */
+    width: 12px;
   }
 
+  /* color of the tracking area */
   .dropdown-content::-webkit-scrollbar-track {
-    background: transparent;  /* color of the tracking area */
+    background: transparent;  
   }
 
   .dropdown-content::-webkit-scrollbar-thumb {
@@ -86,6 +64,37 @@
 
   /* For Firefox */
   .dropdown-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+
+  /* ===== Custom Scrollbar ===== */
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  /* Light Theme */
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;  
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);     /* color of the scroll thumb */
+    border-radius   : 6px;                    /* roundness of the scroll thumb */
+    border          : 3px solid transparent;  /* creates padding around scroll thumb */
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#413f40];
+  }
+
+  /* For Firefox */
+  * {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
@@ -122,73 +131,4 @@
 
 .heartbeat {
   animation: heartbeat 1.5s infinite;
-}
-
-
-/* Custom css for nav */
-.link-underline {
-  position: relative;
-  display : inline-block;
-}
-
-
-/* Hover nav for dark ------------------------------------------------- */
-.dark .link-underline::after {
-  content: '';
-
-  display   : block;
-  position  : absolute;
-  visibility: hidden;
-  background: #171923;
-
-  width : 0;
-  height: 2px;
-
-  right: 0;
-
-  transition: all 0.3s ease-in-out;
-  background: linear-gradient(transparent, transparent), linear-gradient(to right, #6acdff, #57bfff);  /* Sky blue shades */
-}
-
-.dark .link-underline:hover::after {
-  visibility: visible;
-
-  width: 100%;
-
-  left: 0;
-
-  background: linear-gradient(transparent, transparent), linear-gradient(to right, #6acdff, #57bfff);  /* Sky blue shades */
-}
-
-.link-underline2 {
-  position: relative;
-  display : inline-block;
-}
-
-/* Hover nav for light -------------------------------------------------  */
-.link-underline2::after {
-  content: '';
-
-  display   : block;
-  position  : absolute;
-  visibility: hidden;
-  background: #171923;
-
-  width : 0;
-  height: 2px;
-
-  right: 0;
-
-  transition: all 0.3s ease-in-out;
-  background: linear-gradient(transparent, transparent), linear-gradient(to right, #d87787, #861657);  /* New provided colors */
-}
-
-.link-underline2:hover::after {
-  visibility: visible;
-
-  width: 100%;
-
-  left: 0;
-
-  background: linear-gradient(transparent, transparent), linear-gradient(to right, #d87787, #861657);  /* New provided colors */
 }
