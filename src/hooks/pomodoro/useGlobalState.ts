@@ -8,12 +8,13 @@ const useGlobalState = () => {
   // const [pomodoroTime, setPomodoroTime]   = useState(1500)
   // const [lapsesToLongBreak, setLapsesToLongBreak] = useState(4)
 
-  // Inside useGlobalState
+  // Initial state
   const [state, setState] = useState<Pomodoro>({
-    timeLeft: 1500, // for 25 minutes in seconds
-    lapse: 0,
-    type: 'pomodoro',
-    mode: 'idle',
+    timeLeft: 1500,         // for 25 minutes in seconds
+    lapse   : 0,
+    type    : 'Pomodoro',
+    mode    : 'idle',
+    message : 'Time to focus!',
   })
 
   useEffect(() => {

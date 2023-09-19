@@ -94,7 +94,7 @@ const ControlButtons = () => {
                   ...prevState,
                   timeLeft: 1500,
                   mode    : 'idle',
-                  lapse   : prevState.type === 'pomodoro' ? prevState.lapse + 1 : prevState.lapse,
+                  lapse   : prevState.type === 'Pomodoro' ? prevState.lapse + 1 : prevState.lapse,
                 }))
               }}
             >
@@ -105,7 +105,7 @@ const ControlButtons = () => {
       default:
         return (
           <div className='mx-auto flex items-center justify-center text-7xl '>
-            Something has gone wrong, please refresh the page
+            Something has gone wrong, please refresh the page, Thien is too lazy to fix this
           </div>
         )
     }

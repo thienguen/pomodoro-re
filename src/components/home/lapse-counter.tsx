@@ -6,27 +6,29 @@ function LapseCounter() {
   const { state } = usePomodoroContext()!
 
   const getActualLapse = () => {
-    let lapseMessage = ''
+    let typeLabel = ''
     let additionalMessage = ''
 
     switch (state.type) {
-      case 'pomodoro':
-        lapseMessage = state.lapse.toString() 
-        additionalMessage = 'Time to focus!'
+      case 'Pomodoro':
+        typeLabel = state.lapse.toString() 
+        additionalMessage = state.message
         break
-      case 'shortBreak':
-        lapseMessage = 'Short Break'
+      case 'Short Break':
+        typeLabel = 'Short Break'
         additionalMessage = 'Time for a break!'
         break
-      case 'longBreak':
-        lapseMessage = 'Long Break'
+      case 'Long Break':
+        typeLabel = 'Long Break'
         additionalMessage = 'Time for a longer break!'
         break
     }
 
+    /* This is interesting about react, state wont render first mounted */
+    /* If you try state.member <-- it will likely empty */
     return (
       <div className={`flex flex-col items-center`}>
-        <p className='text-xl font-medium'>{lapseMessage}</p>
+        <p className='text-xl font-medium'>{typeLabel}</p>
         <p className='text-base'>{additionalMessage}</p>
       </div>
     )

@@ -46,6 +46,7 @@ const InnerLayout: React.FC<InnerLayoutProps> = ({ children }) => {
         <title>{'Thien Nguyen'}</title>
         <meta content={'Thienguen'} property='og:title' />
         <meta content={'Recreating Pomodoro, cause I said so'} property='og:description' />
+        <link id="favicon" rel="icon" href="/fav/favicon-gray-16x16.png" />
       </head>
 
       {/* Body layout */}
