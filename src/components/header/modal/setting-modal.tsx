@@ -1,6 +1,7 @@
 'use client'
 
 import { FC } from 'react'
+import useSound from 'use-sound'
 import Modal from '@/components/ui/modal'
 import { Input, Item, Label, Row, Switch } from '@/components/setting'
 import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
@@ -8,7 +9,6 @@ import { usePomodoroContext } from '@/hooks/pomodoro/usePomodoroContext'
 interface SettingModalProps {
   onClose: () => void
 }
-
 
 /**
  * Time setting modal:
@@ -19,6 +19,7 @@ interface SettingModalProps {
  */
 const SettingModal: FC<SettingModalProps> = ({ onClose }) => {
   const { state, setState } = usePomodoroContext()!
+  const [ThemeSound] = useSound('/sounds/switch-on.mp3', { volume: 0.5 })
 
   const handleTimeChange = (type: string, newValue: number) => {
     // Create a new array with updated values
@@ -68,6 +69,7 @@ const SettingModal: FC<SettingModalProps> = ({ onClose }) => {
         <Item>
           <Label>Auto start Breaks?</Label>
           <Switch on={state.autoBreak} onClick={() => {
+            ThemeSound()
             setState((prevState) => ({ ...prevState, autoBreak: !prevState.autoBreak }))
           }} />
         </Item>
@@ -76,6 +78,7 @@ const SettingModal: FC<SettingModalProps> = ({ onClose }) => {
         <Item>
           <Label>Auto start Pomodoros?</Label>
           <Switch on={state.autoPomo} onClick={() => {
+            ThemeSound()
             setState((prevState) => ({ ...prevState, autoPomo: !prevState.autoPomo }))
           }} />
         </Item>

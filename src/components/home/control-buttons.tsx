@@ -32,7 +32,7 @@ const ControlButtons = () => {
   const { state, setState } = usePomodoroContext()!
 
   /* Sound, peep, peep */
-  const [ThemeSound] = useSound('/sounds/switch-on.mp3', { volume: 1 })
+  const [ThemeSound] = useSound('/sounds/button-press.wav', { volume: 1 })
 
   /* Get the scale factor from the custom hook */
   const getScaleFactor = useResponsiveSize()
@@ -52,6 +52,7 @@ const ControlButtons = () => {
             animate={{ color: '#fff', right: 0, width: 100 }}
             transition={{ type: 'spring', duration: 0.15 }}
             onClick={() => {
+              ThemeSound()
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
@@ -67,6 +68,7 @@ const ControlButtons = () => {
             animate={{ color: '#fff', right: 0, width: 120 }}
             transition={{ type: 'spring', duration: 0.15 }}
             onClick={() => {
+              ThemeSound()
               setState((prevState: Pomodoro) => ({ ...prevState, mode: 'running' }))
             }}
           >
@@ -84,6 +86,7 @@ const ControlButtons = () => {
               animate={{ width: 50, left: 0, color: '#fff' }}
               transition={{ type: 'spring', duration: 0.3 }}
               onClick={() => {
+                ThemeSound()
                 setState((prevState: Pomodoro) => ({ ...prevState, mode: 'paused' }))
               }}
             >
@@ -97,6 +100,7 @@ const ControlButtons = () => {
               animate={{ opacity: 1, left: 0 }}
               transition={{ type: 'spring', duration: 0.15, delay: 0.05 }}
               onClick={() => {
+                ThemeSound()
                 setState((prevState: Pomodoro) => ({
                   ...prevState,
                   timeLeft: prevState.type === 'Pomodoro' ? 1500 : prevState.type === 'Short Break' ? 300 : 900,

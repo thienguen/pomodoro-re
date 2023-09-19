@@ -1,11 +1,12 @@
+'use client'
+
+import { useSound } from 'use-sound';
 import { Pomodoro } from '@/lib/type/pomodoro.type'
 import { useEffect, useState } from 'react'
 
 const useGlobalState = () => {
-  // const [breakTime, setBreakTime]         = useState(300)
-  // const [longBreakTime, setLongBreakTime] = useState(900)
-  // const [pomodoroTime, setPomodoroTime]   = useState(1500)
-  // const [lapsesToLongBreak, setLapsesToLongBreak] = useState(4)
+
+  const [ThemeSound] = useSound('/sounds/alarm-digital.mp3', { volume: 1 })
 
   // Initial state of the pomodoro
   const [state, setState] = useState<Pomodoro>({
@@ -48,6 +49,7 @@ const useGlobalState = () => {
           } else {
             // Check for autoBreak
             if (prevState.autoBreak && prevState.type === 'Pomodoro') {
+              ThemeSound()
               return {
                 ...prevState,
                 type: 'Short Break',
@@ -59,6 +61,7 @@ const useGlobalState = () => {
 
             // Check for autoPomo
             if (prevState.autoPomo && prevState.type !== 'Pomodoro') {
+              ThemeSound()
               return {
                 ...prevState,
                 type: 'Pomodoro',
@@ -69,6 +72,7 @@ const useGlobalState = () => {
             }
 
             // Default behavior
+            ThemeSound()
             return { ...prevState, mode: 'idle', lapse: prevState.lapse + 1 }
           }
         })
@@ -79,7 +83,7 @@ const useGlobalState = () => {
 
     // Cleanup on unmount
     return () => clearInterval(timer)
-  }, [state.mode, state.autoBreak, state.autoPomo])
+  }, [state.mode, state.autoBreak, state.autoPomo, ThemeSound])
 
   return {
     state,
